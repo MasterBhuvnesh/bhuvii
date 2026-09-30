@@ -3,9 +3,6 @@ title: Your Roadmap to Framework Selection Success
 excerpt: Choosing the right framework for your web project is a critical decision that can significantly impact the development process and the success of your project. With so many options available, it's essential to consider various factors before making a choice.
 publishDate: 'Jul 11 2026'
 isFeatured: true
-tags:
-  - Web
-  - Guide
 seo:
   image:
     src: '../../assets/images/post-14.jpg'

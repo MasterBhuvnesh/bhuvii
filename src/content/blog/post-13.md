@@ -2,9 +2,6 @@
 title: 'A Guide to Web Performance Metrics'
 excerpt: Dive deep into web performance metrics, including tools and techniques for measuring and optimizing loading times. Discuss the significance of metrics like First Contentful Paint, Time to Interactive, and more.
 publishDate: 'Jan 03 2024'
-tags:
-  - Web
-  - Guide
 isFeatured: true
 seo:
   image:
@@ -46,7 +43,7 @@ Web performance directly affects user engagement and conversion rates. Slow-load
 
 ## Web Vitals
 
-Google's Web Vitals initiative introduced three core metrics – Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS). These metrics focus on key aspects of user experience, including loading performance, interactivity, and visual stability. Aim to optimize these metrics to enhance overall user satisfaction and meet Google's performance expectations.
+Google's Web Vitals initiative introduced three core metrics â€“ Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS). These metrics focus on key aspects of user experience, including loading performance, interactivity, and visual stability. Aim to optimize these metrics to enhance overall user satisfaction and meet Google's performance expectations.
 
 ## Conclusion
 
