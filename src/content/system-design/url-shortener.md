@@ -59,7 +59,7 @@ Use a hash function to generate a short URL, mapping long URLs to unique shorten
 - Each hashValue can be mapped back to the longURL.
 
 ```mermaid
-flowchart LR
+flowchart TB
     U[User] --> S[POST /shorten]
     S --> DB[(Database)]
     DB --> C{Exists?}
@@ -68,11 +68,6 @@ flowchart LR
     G --> B[Base62 encode]
     B --> ST[Store mapping]
     ST --> R2[Return shortURL]
-    V[Visitor] --> L[GET /shortUrl]
-    L --> CA[(Cache)]
-    CA -->|Hit| RD[302 redirect]
-    CA -->|Miss| DB2[(Database)]
-    DB2 --> RD
 ```
 
 ## 3. Step 2: Deep Dive into Design
@@ -123,6 +118,15 @@ Use hash functions like CRC32, MD5, or SHA-1. One approach is to collect the fir
 - If not in the cache, query the database.
 - Redirect the user to longURL.
 
+```mermaid
+flowchart TB
+    V[Visitor] --> L[GET /shortUrl]
+    L --> CA[(Cache)]
+    CA -->|Hit| RD[302 redirect]
+    CA -->|Miss| DB2[(Database)]
+    DB2 --> RD
+```
+
 ## 4. Additional Considerations
 
 ### Rate Limiter
@@ -141,3 +145,9 @@ Collect data like click rates, source, and timestamps for business insights.
 ### High Availability and Reliability
 
 Ensure consistent and reliable services using database replication and fault-tolerant design.
+
+
+
+
+
+
