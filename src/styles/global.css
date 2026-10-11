@@ -1,7 +1,4 @@
-@import '@fontsource-variable/inter' layer(base);
-@import '@fontsource-variable/newsreader' layer(base);
-@import '@fontsource-variable/newsreader/wght-italic.css' layer(base);
-
+@import 'katex/dist/katex.min.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
@@ -23,49 +20,55 @@ html.dark {
 /* Cyan */
 /*
 :root {
-    --text-main: #162a2b;
-    --bg-main: #d6e0e2;
-    --bg-muted: #ccd8db;
-    --border-main: #162a2b;
+ --text-main: #162a2b;
+ --bg-main: #d6e0e2;
+ --bg-muted: #ccd8db;
+ --border-main: #162a2b;
 }
 html.dark {
-    --text-main: #d6e0e2;
-    --bg-main: #162a2b;
-    --bg-muted: #1c3537;
-    --border-main: #d6e0e2;
+ --text-main: #d6e0e2;
+ --bg-main: #162a2b;
+ --bg-muted: #1c3537;
+ --border-main: #d6e0e2;
 }
 */
 
 /* Green */
 /*
 :root {
-    --text-main: #3a4238;
-    --bg-main: #f3efe6;
-    --bg-muted: #eee9dc;
-    --border-main: #3a4238;
+ --text-main: #3a4238;
+ --bg-main: #f3efe6;
+ --bg-muted: #eee9dc;
+ --border-main: #3a4238;
 }
 html.dark {
-    --text-main: #f3efe6;
-    --bg-main: #5e6c5b;
-    --bg-muted: #596756;
-    --border-main: #f3efe6;
+ --text-main: #f3efe6;
+ --bg-main: #5e6c5b;
+ --bg-muted: #596756;
+ --border-main: #f3efe6;
 }
 */
 
 @theme inline {
-    --font-sans: 'Inter Variable', sans-serif;
-    --font-serif: 'Newsreader Variable', serif;
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-serif: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     --text-color-main: var(--text-main);
     --background-color-main: var(--bg-main);
     --background-color-muted: var(--bg-muted);
     --border-color-main: var(--border-main);
 }
 
+@layer base {
+    body {
+        font-family: var(--font-sans);
+    }
+}
+
 @layer utilities {
     /* Thin scrollbars for native scrollers.
-       WebKit-only so the arrow buttons can be removed
-       (scrollbar-width: thin would make Chromium ignore these rules).
-       height handles horizontal scrollers. */
+ WebKit-only so the arrow buttons can be removed
+ (scrollbar-width: thin would make Chromium ignore these rules).
+ height handles horizontal scrollers. */
     ::-webkit-scrollbar {
         width: 4px;
         height: 4px;
@@ -85,7 +88,7 @@ html.dark {
     }
 
     /* Hide scrollbar entirely while keeping scrollability.
-       Use sparingly: only when scroll is still discoverable (wheel/touch). */
+ Use sparingly: only when scroll is still discoverable (wheel/touch). */
     .no-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -107,16 +110,16 @@ html.dark {
         --tw-prose-captions: var(--text-color-main);
         --tw-prose-kbd: var(--text-color-main);
         --tw-prose-code: var(--text-color-main);
-        --tw-prose-th-borders: var(--border-color-main);
-        --tw-prose-td-borders: var(--border-color-main);
+        --tw-prose-th-borders: color-mix(in oklab, var(--border-color-main) 50%, transparent);
+        --tw-prose-td-borders: color-mix(in oklab, var(--border-color-main) 50%, transparent);
     }
 
     .prose a {
-        @apply font-normal underline decoration-dashed decoration-1 underline-offset-2 hover:decoration-solid;
+        @apply font-normal underline decoration-2 underline-offset-2 decoration-[color-mix(in_oklab,var(--text-main)_40%,transparent)] hover:decoration-[var(--text-main)];
     }
 
     .prose :where(h1, h2, h3, h4, h5, h6) {
-        @apply font-serif font-medium;
+        @apply font-sans font-medium;
     }
 
     .prose :where(code, strong) {
@@ -124,6 +127,57 @@ html.dark {
     }
 
     .prose blockquote {
-        @apply border-none pl-0 font-serif text-[1.375em] leading-snug font-normal italic sm:text-[1.66667em];
+        @apply border-none pl-0 font-sans text-[1.375em] leading-snug font-normal sm:text-[1.66667em];
     }
+
+    /* Article body in the muted "description" tone. Headings stay full color;
+       only applied where .article-muted is set — generic .prose is untouched. */
+    .article-muted {
+        --tw-prose-body: color-mix(in oklab, var(--text-main) 70%, transparent);
+        --tw-prose-links: color-mix(in oklab, var(--text-main) 70%, transparent);
+        --tw-prose-bullets: color-mix(in oklab, var(--text-main) 70%, transparent);
+        --tw-prose-counters: color-mix(in oklab, var(--text-main) 70%, transparent);
+        --tw-prose-code: color-mix(in oklab, var(--text-main) 70%, transparent);
+        --tw-prose-quotes: color-mix(in oklab, var(--text-main) 70%, transparent);
+        --tw-prose-captions: color-mix(in oklab, var(--text-main) 70%, transparent);
+    }
+}
+
+/* Pure fade page transition */
+::view-transition-old(root) {
+    animation: fade-out 0.5s ease-in-out both;
+}
+::view-transition-new(root) {
+    animation: fade-in 0.5s ease-in-out both;
+}
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Math in body font: KaTeX's serif metrics don't suit a DM Sans page, so
+   formulas inherit the site font. Fine for simple expressions; KaTeX's
+   spacing assumes its own fonts, so very complex layouts may sit slightly
+   off compared to stock KaTeX. */
+.katex,
+.katex-display,
+.katex .mathit,
+.katex .mathrm {
+    font-family: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+.katex-display {
+    font-size: 0.875em;
+    margin: 1em 0;
 }
