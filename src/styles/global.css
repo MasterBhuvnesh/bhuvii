@@ -126,6 +126,11 @@ html.dark {
         @apply font-medium;
     }
 
+    .prose :where(th) {
+        color: var(--tw-prose-headings);
+        @apply font-medium;
+    }
+
     .prose blockquote {
         @apply border-none pl-0 font-sans text-[1.375em] leading-snug font-normal sm:text-[1.66667em];
     }
@@ -177,7 +182,97 @@ html.dark {
 .katex .mathrm {
     font-family: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
+/* Inline math inherits body size instead of KaTeX's 1.21em default. */
+.katex {
+    font-size: 1em;
+}
 .katex-display {
     font-size: 0.875em;
     margin: 1em 0;
+}
+
+/* Build-time diagrams, styled like the roadmap: solid theme chips with
+   inverted labels and dimmed edges. Theme vars adapt to light/dark
+   automatically, so one SVG serves both. Mermaid hardcodes its own
+   palette inside the SVG, hence the !important overrides. */
+.mm {
+    display: flex;
+    justify-content: center;
+}
+.mm svg {
+    max-width: 100%;
+    height: auto;
+}
+/* DM Sans labels like the rest of the page, sized like roadmap boxes. */
+.mm svg text,
+.mm svg span {
+    font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+/* Solid theme chips with roadmap-like rounded corners. */
+.mm svg .node rect,
+.mm svg .node circle,
+.mm svg .node ellipse,
+.mm svg .node polygon,
+.mm svg .node path {
+    fill: color-mix(in oklab, var(--text-main) 80%, var(--bg-main)) !important;
+    stroke: color-mix(in oklab, var(--text-main) 80%, var(--bg-main)) !important;
+    rx: 6px;
+}
+/* Inverted chip labels. */
+.mm svg .node span,
+.mm svg .nodeLabel,
+.mm svg .node text {
+    fill: var(--bg-main) !important;
+    color: var(--bg-main) !important;
+}
+/* Dimmed edges, markers and edge labels. */
+.mm svg .flowchart-link,
+.mm svg .edge-thickness-normal {
+    stroke: color-mix(in oklab, var(--text-main) 40%, transparent) !important;
+}
+.mm svg .marker,
+.mm svg .arrowMarkerPath {
+    fill: color-mix(in oklab, var(--text-main) 40%, transparent) !important;
+    stroke: color-mix(in oklab, var(--text-main) 40%, transparent) !important;
+}
+.mm svg .edgeLabel {
+    background-color: transparent !important;
+}
+.mm svg .labelBkg {
+    background-color: transparent !important;
+}
+.mm svg .edgeLabel span {
+    color: var(--text-main) !important;
+    background-color: transparent !important;
+    font-size: 1rem !important;
+    text-shadow:
+        0 0 3px var(--bg-main),
+        0 0 8px var(--bg-main),
+        0 0 14px var(--bg-main);
+}
+.mm svg .edgeLabel p {
+    background-color: transparent !important;
+}
+.mm svg .edgeLabel rect {
+    fill: transparent !important;
+}
+
+/* Roadmap-style flow nodes for hand-built diagrams in articles. */
+.mm-node {
+    border: 2px solid var(--text-main);
+    background: color-mix(in oklab, var(--text-main) 8%, transparent);
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+.mm-vline {
+    width: 0;
+    height: 1.5rem;
+    margin-inline: auto;
+    border-left: 3px dotted color-mix(in oklab, var(--text-main) 40%, transparent);
 }

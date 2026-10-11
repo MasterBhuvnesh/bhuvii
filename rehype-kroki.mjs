@@ -7,6 +7,22 @@
 
 const cache = new Map();
 
+async function renderSvg(source) {
+    let svg = cache.get(source);
+    if (!svg) {
+        const res = await fetch('https://kroki.io/mermaid/svg', {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain' },
+            body: source
+        });
+        if (!res.ok) throw new Error(`kroki ${res.status}`);
+        svg = await res.text();
+        if (!svg.includes('<svg')) throw new Error('kroki: no svg');
+        cache.set(source, svg);
+    }
+    return svg;
+}
+
 function textOf(node) {
     if (node.type === 'text') return node.value;
     if (Array.isArray(node.children)) return node.children.map(textOf).join('');
@@ -64,19 +80,11 @@ export default function rehypeMermaidKroki() {
         for (const job of jobs) {
             if (!job.parent || job.index < 0) continue;
             try {
-                let svg = cache.get(job.text);
-                if (!svg) {
-                    const res = await fetch('https://kroki.io/mermaid/svg', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'text/plain' },
-                        body: job.text
-                    });
-                    if (!res.ok) throw new Error(`kroki ${res.status}`);
-                    svg = await res.text();
-                    if (!svg.includes('<svg')) throw new Error('kroki: no svg');
-                    cache.set(job.text, svg);
-                }
-                job.parent.children[job.index] = { type: 'raw', value: svg };
+                const svg = await renderSvg(job.text);
+                job.parent.children[job.index] = {
+                    type: 'raw',
+                    value: `<span class="mm">${svg}</span>`
+                };
             } catch {
                 // Offline or Kroki down: keep the readable code block.
             }
