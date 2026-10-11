@@ -1,0 +1,7 @@
+---
+title: "Unified Modeling Language (UML)"
+section: fundamentals
+publishDate: 'Oct 11 2026'
+---
+
+Full notes coming soon.
