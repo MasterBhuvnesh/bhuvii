@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { systemDesignSections } from '../data/system-design-sections';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sortItemsByDateDesc } from '../utils/data-utils';
+
+const posts = (await getCollection('systemDesign')).sort(sortItemsByDateDesc);
+---
+
+<BaseLayout
+    title="System Design"
+    description="System design fundamentals, platform design breakdowns and recommended learning resources"
+    showHeader={false}
+>
+    {
+        systemDesignSections.map((section, i) => {
+            const sectionPosts = posts.filter((post) => post.data.section === section.id);
+            if (sectionPosts.length === 0) return null;
+            return (
+                <div id={section.id} class="group mb-12 scroll-mt-8 sm:mb-16">
+                    <div class="flex items-baseline justify-between gap-4">
+                        <a href={`/system-design/${section.id}`}>
+                            <h2 class="font-sans text-lg font-medium transition group-hover:opacity-60">
+                                {section.title}
+                            </h2>
+                        </a>
+                        {i === 0 && (
+                            <a
+                                href="/system-design-roadmap"
+                                class="shrink-0 rounded-full border border-main px-4 py-1.5 text-sm transition-colors hover:bg-muted"
+                            >
+                                roadmap
+                            </a>
+                        )}
+                    </div>
+                    <p class="mt-2 leading-relaxed text-main/70 transition group-hover:opacity-60">{section.description}</p>
+                </div>
+            );
+        })
+    }
+</BaseLayout>

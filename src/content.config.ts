@@ -16,19 +16,6 @@ const seoSchema = (image: ImageFunction) =>
         pageType: z.enum(['website', 'article']).optional()
     });
 
-const blog = defineCollection({
-    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
-    schema: ({ image }) =>
-        z.object({
-            title: z.string(),
-            excerpt: z.string().optional(),
-            publishDate: z.coerce.date(),
-            updatedDate: z.coerce.date().optional(),
-            isFeatured: z.boolean().default(false),
-            seo: seoSchema(image).optional()
-        })
-});
-
 const pages = defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pages' }),
     schema: ({ image }) =>
@@ -38,16 +25,17 @@ const pages = defineCollection({
         })
 });
 
-const projects = defineCollection({
-    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
+const systemDesign = defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/system-design' }),
     schema: ({ image }) =>
         z.object({
             title: z.string(),
-            description: z.string().optional(),
+            excerpt: z.string().optional(),
+            section: z.enum(['fundamentals', 'platforms', 'piyush-garg']),
             publishDate: z.coerce.date(),
-            isFeatured: z.boolean().default(false),
+            updatedDate: z.coerce.date().optional(),
             seo: seoSchema(image).optional()
         })
 });
 
-export const collections = { blog, pages, projects };
+export const collections = { pages, systemDesign };

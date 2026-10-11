@@ -1,0 +1,26 @@
+---
+type Props = {
+    title: string;
+    description?: string;
+    headingLevel?: 'h1' | 'h2' | 'h3';
+    class?: string;
+};
+
+const { title, description, headingLevel = 'h2', class: className } = Astro.props;
+const TitleTag = headingLevel;
+---
+
+<div class:list={['mx-auto w-full max-w-3xl text-center', className]}>
+    <TitleTag
+        class="mx-auto bg-gradient-to-b from-black to-black/60 bg-clip-text text-center text-2xl leading-none font-medium text-transparent md:text-4xl lg:text-[64px] dark:from-white dark:to-white/60"
+    >
+        {title}
+    </TitleTag>
+    {
+        description && (
+            <p class="text-main/70 mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-balance lg:text-[18px]">
+                {description}
+            </p>
+        )
+    }
+</div>

@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import roadmapRows from '../data/system-design-sheet.json';
+
+type GroupBlock = { items: (string | string[])[]; label?: string };
+type Child =
+    | { kind: 'box'; title: string }
+    | { kind: 'card'; lines: string[]; title: string }
+    | { kind: 'group'; blocks: GroupBlock[] };
+type Row = { center: string; left?: Child[]; right?: Child[]; below?: Child[]; note?: string };
+
+const rows = roadmapRows as Row[];
+
+const boxClass =
+    'rounded-md border-2 border-[var(--text-main)] bg-[color-mix(in_oklab,var(--text-main)_8%,transparent)] px-4 py-2 text-center text-sm font-medium text-main';
+const cardClass =
+    'rounded-md border-2 border-[var(--text-main)] bg-[color-mix(in_oklab,var(--text-main)_4%,transparent)] px-4 py-3 text-center text-sm text-main';
+const chipClass =
+    'rounded-md border-2 border-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))] bg-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))] px-6 py-2 text-center font-medium text-balance text-[var(--bg-main)] sm:max-w-md';
+const stubClass =
+    'hidden w-8 shrink-0 border-t-[3px] border-dotted border-[color-mix(in_oklab,var(--text-main)_40%,transparent)] md:block';
+---
+
+<BaseLayout
+    title="System Design Roadmap"
+    description="A visual roadmap of system design topics — core concepts, patterns and availability math"
+    showHeader={false}
+>
+    <h1 class="mb-4 font-sans text-2xl leading-tight sm:text-4xl">System Design Roadmap</h1>
+    <p class="mb-12 leading-relaxed text-main/70 sm:mb-16">
+        Follow the spine top to bottom. Each dark node is a core topic — the cards branching off hold the details.
+    </p>
+
+    <div class="relative mb-16 sm:mb-24">
+        <div class="flex flex-col gap-8 md:gap-10">
+            {rows.map((row, i) => (
+                <div>
+                    {row.note && (
+                        <>
+                            {(rows[i - 1]?.below?.length ?? 0) > 0 && (
+                                <div
+                                    aria-hidden="true"
+                                    class="mx-auto mb-4 hidden h-8 w-[3px] bg-[color-mix(in_oklab,var(--text-main)_40%,transparent)] md:block"
+                                ></div>
+                            )}
+                            <p
+                                class:list={[
+                                    'mx-auto max-w-xl text-center text-sm leading-relaxed text-main/70',
+                                    (rows[i - 1]?.below?.length ?? 0) > 0 ? 'mb-12' : 'mb-6'
+                                ]}
+                            >
+                                {row.note}
+                            </p>
+                        </>
+                    )}
+                    <div class="relative grid items-center gap-3 md:grid-cols-[1fr_auto_1fr] md:gap-2">
+                        <div
+                            aria-hidden="true"
+                            class:list={[
+                                'absolute left-1/2 hidden w-[3px] -translate-x-1/2 bg-[color-mix(in_oklab,var(--text-main)_40%,transparent)] md:block',
+                                (rows[i - 1]?.below?.length ?? 0) > 0 ? '-top-10 -bottom-5' : '-top-5 -bottom-5'
+                            ]}
+                        ></div>
+                        <div class="flex items-center gap-2 max-md:order-2">
+                            <div class="flex flex-1 flex-col items-center gap-2 md:items-end">
+                                {(row.left ?? []).map((child) =>
+                                    child.kind === 'box' ? (
+                                        child.href ? (
+                                            <a href={child.href} class={`${boxClass} transition-colors hover:bg-muted`}>
+                                                {child.title}
+                                            </a>
+                                        ) : (
+                                            <div class={boxClass}>{child.title}</div>
+                                        )
+                                    ) : child.kind === 'card' ? (
+                                        <div class={cardClass}>
+                                            {child.lines.map((line) => (
+                                                <p class="mb-2">{line}</p>
+                                            ))}
+                                            <div class={boxClass}>{child.title}</div>
+                                        </div>
+                                    ) : (
+                                        <div class={cardClass}>
+                                            {child.blocks.map((block) => (
+                                                <div class="mb-2 last:mb-0">
+                                                    {block.items.map((item) =>
+                                                        typeof item === 'string' ? (
+                                                            <div class={`${boxClass} mb-2`}>{item}</div>
+                                                        ) : (
+                                                            <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                                                                {item.map((cell) => (
+                                                                    <div class={boxClass}>{cell}</div>
+                                                                ))}
+                                                            </div>
+                                                        )
+                                                    )}
+                                                    {block.label && (
+                                                        <p class="mt-2 text-sm text-main/70">{block.label}</p>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )
+                                )}
+                            </div>
+                            {(row.left ?? []).length > 0 && (
+                                <div aria-hidden="true" class={stubClass}></div>
+                            )}
+                        </div>
+                        <div class="relative max-md:order-1 max-md:mx-auto">
+                            <div class={chipClass}>{row.center}</div>
+                        </div>
+                        <div class="flex items-center gap-2 max-md:order-3">
+                            {(row.right ?? []).length > 0 && (
+                                <div aria-hidden="true" class={stubClass}></div>
+                            )}
+                            <div class="flex flex-1 flex-col items-center gap-2 md:items-start">
+                                {(row.right ?? []).map((child) =>
+                                    child.kind === 'box' ? (
+                                        child.href ? (
+                                            <a href={child.href} class={`${boxClass} transition-colors hover:bg-muted`}>
+                                                {child.title}
+                                            </a>
+                                        ) : (
+                                            <div class={boxClass}>{child.title}</div>
+                                        )
+                                    ) : child.kind === 'card' ? (
+                                        <div class={cardClass}>
+                                            {child.lines.map((line) => (
+                                                <p class="mb-2">{line}</p>
+                                            ))}
+                                            <div class={boxClass}>{child.title}</div>
+                                        </div>
+                                    ) : (
+                                        <div class={cardClass}>
+                                            {child.blocks.map((block) => (
+                                                <div class="mb-2 last:mb-0">
+                                                    {block.items.map((item) =>
+                                                        typeof item === 'string' ? (
+                                                            <div class={`${boxClass} mb-2`}>{item}</div>
+                                                        ) : (
+                                                            <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                                                                {item.map((cell) => (
+                                                                    <div class={boxClass}>{cell}</div>
+                                                                ))}
+                                                            </div>
+                                                        )
+                                                    )}
+                                                    {block.label && (
+                                                        <p class="mt-2 text-sm text-main/70">{block.label}</p>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                    {(row.below ?? []).length > 0 && (
+                        <div class={`mt-8 ${(row.below ?? []).length > 1 ? 'grid gap-4 md:grid-cols-3' : 'flex flex-col'}`}>
+                            {(row.below ?? []).map(
+                                (child) =>
+                                    child.kind === 'group' && (
+                                        <div class={cardClass}>
+                                            {child.blocks.map((block) => (
+                                                <div class="mb-2 last:mb-0">
+                                                    {block.items.map((item) =>
+                                                        typeof item === 'string' ? (
+                                                            <div class={`${boxClass} mb-2`}>{item}</div>
+                                                        ) : (
+                                                            <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                                                                {item.map((cell) => (
+                                                                    <div class={boxClass}>{cell}</div>
+                                                                ))}
+                                                            </div>
+                                                        )
+                                                    )}
+                                                    {block.label && (
+                                                        <p class="mt-2 text-sm text-main/70">{block.label}</p>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )
+                            )}
+                        </div>
+                    )}
+                </div>
+            ))}
+        </div>
+    </div>
+</BaseLayout>

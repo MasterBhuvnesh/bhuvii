@@ -1,0 +1,280 @@
+[
+    {
+        "center": "Introduction",
+        "right": [{ "kind": "box", "title": "What is System Design?" }, { "kind": "box", "title": "How to approach System Design?" }]
+    },
+    { "center": "Performance vs Scalability" },
+    { "center": "Latency vs Throughput" },
+    { "center": "Availability vs Consistency" },
+    {
+        "center": "Consistency Patterns",
+        "left": [
+            {
+                "kind": "card",
+                "lines": ["AP - Availability + Partition Tolerance", "CP - Consistency + Partition Tolerance"],
+                "title": "CAP Theorem"
+            }
+        ],
+        "right": [
+            { "kind": "box", "title": "Weak Consistency" },
+            { "kind": "box", "title": "Eventual Consistency" },
+            { "kind": "box", "title": "Strong Consistency" }
+        ]
+    },
+    {
+        "center": "Availability Patterns",
+        "left": [
+            { "kind": "card", "lines": ["Active - Active", "Active - Passive"], "title": "Fail-Over" },
+            { "kind": "card", "lines": ["Master - Slave", "Master - Master"], "title": "Replication" }
+        ],
+        "right": [
+            {
+                "kind": "card",
+                "lines": [
+                    "99.9% Availability - three 9s",
+                    "99.99% Availability - four 9s",
+                    "Availability in Parallel vs Sequence"
+                ],
+                "title": "Availability in Numbers"
+            }
+        ]
+    },
+    {
+        "center": "Background Jobs",
+        "left": [{ "kind": "box", "title": "Event-Driven" }, { "kind": "box", "title": "Schedule Driven" }]
+    },
+    { "center": "Returning Results" },
+    { "center": "Domain Name System" },
+    {
+        "center": "Content Delivery Networks",
+        "right": [{ "kind": "box", "title": "Pull CDNs" }, { "kind": "box", "title": "Push CDNs" }]
+    },
+    {
+        "center": "Application Layer",
+        "left": [{ "kind": "box", "title": "Microservices" }, { "kind": "box", "title": "Service Discovery" }]
+    },
+    {
+        "center": "Load Balancers",
+        "right": [
+            { "kind": "box", "title": "LB vs Reverse Proxy" },
+            { "kind": "box", "title": "Load Balancing Algorithms" },
+            { "kind": "box", "title": "Layer 7 Load Balancing" },
+            { "kind": "box", "title": "Layer 4 Load Balancing" },
+            { "kind": "box", "title": "Horizontal Scaling" }
+        ]
+    },
+    {
+        "center": "Databases",
+        "left": [
+            {
+                "kind": "group",
+                "blocks": [
+                    {
+                        "items": ["Key-Value Store", "Document Store", "Wide Column Store", "Graph Databases"],
+                        "label": "NoSQL"
+                    },
+                    {
+                        "items": ["Replication", "Sharding", "Federation", "Denormalization", "SQL Tuning"],
+                        "label": "RDBMS"
+                    }
+                ]
+            }
+        ],
+        "right": [{ "kind": "box", "title": "SQL vs NoSQL" }]
+    },
+    {
+        "center": "Caching",
+        "right": [
+            {
+                "kind": "group",
+                "blocks": [
+                    {
+                        "items": ["Refresh Ahead", "Write-behind", "Write-through", "Cache Aside"],
+                        "label": "Strategies"
+                    },
+                    {
+                        "items": [
+                            "Client Caching",
+                            "CDN Caching",
+                            "Web Server Caching",
+                            "Database Caching",
+                            "Application Caching"
+                        ],
+                        "label": "Types of Caching"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "center": "Asynchronism",
+        "left": [
+            { "kind": "box", "title": "Back Pressure" },
+            { "kind": "box", "title": "Task Queues" },
+            { "kind": "box", "title": "Message Queues" }
+        ]
+    },
+    {
+        "center": "Communication",
+        "left": [
+            { "kind": "group", "blocks": [{ "items": [["HTTP", "TCP", "UDP"]] }] },
+            { "kind": "group", "blocks": [{ "items": [["RPC", "gRPC"], ["REST", "GraphQL"]] }] }
+        ],
+        "right": [{ "kind": "box", "title": "Idempotent Operations" }]
+    },
+    {
+        "center": "Performance Antipatterns",
+        "below": [
+            {
+                "kind": "group",
+                "blocks": [
+                    {
+                        "items": [
+                            ["Improper Instantiation", "Busy Database"],
+                            ["Monolithic Persistence", "Busy Frontend"],
+                            ["Noisy Neighbor", "Chatty I/O"],
+                            ["Synchronous I/O", "Retry Storm"],
+                            ["Extraneous Fetching", "No Caching"]
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "center": "Monitoring",
+        "right": [
+            { "kind": "box", "title": "Health Monitoring" },
+            { "kind": "box", "title": "Availability Monitoring" },
+            { "kind": "box", "title": "Performance Monitoring" },
+            { "kind": "box", "title": "Security Monitoring" },
+            { "kind": "box", "title": "Usage Monitoring" },
+            { "kind": "box", "title": "Instrumentation" },
+            { "kind": "box", "title": "Visualization & Alerts" }
+        ]
+    },
+    {
+        "center": "Cloud Design Patterns",
+        "note": "The design patterns in this section vary in importance. Get an overview of each — that is enough insight for designing scalable systems.",
+        "below": [
+            {
+                "kind": "group",
+                "blocks": [
+                    {
+                        "items": [
+                            ["Strangler Fig", "Sidecar"],
+                            "Static Content Hosting",
+                            ["Leader Election", "CQRS"],
+                            ["Pipes & Filters", "Ambassador"],
+                            "Gateway Routing",
+                            "Gateway Offloading",
+                            "Gateway Aggregation",
+                            "External Config Store",
+                            "Compute Resource Consolidation",
+                            "Backends for Frontend",
+                            "Anti-Corruption Layer"
+                        ],
+                        "label": "Design & Implementation"
+                    }
+                ]
+            },
+            {
+                "kind": "group",
+                "blocks": [
+                    {
+                        "items": [
+                            "Sequential Convoy",
+                            "Scheduling Agent Supervisor",
+                            "Queue-based Load Leveling",
+                            "Publisher/Subscriber",
+                            "Priority Queue",
+                            "Pipes and Filters",
+                            "Competing Consumers",
+                            "Choreography",
+                            "Claim Check",
+                            "Async Request Reply"
+                        ],
+                        "label": "Messaging"
+                    }
+                ]
+            },
+            {
+                "kind": "group",
+                "blocks": [
+                    {
+                        "items": [
+                            "Valet Key",
+                            "Static Content Hosting",
+                            "Sharding",
+                            "Materialized View",
+                            "Index Table",
+                            "Event Sourcing",
+                            "CQRS",
+                            "Cache-Aside"
+                        ],
+                        "label": "Data Management"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "center": "Reliability Patterns",
+        "below": [
+            {
+                "kind": "group",
+                "blocks": [
+                    {
+                        "items": [
+                            "Deployment Stamps",
+                            ["Geodes", "Throttling"],
+                            "Health Endpoint Monitoring",
+                            "Queue-Based Load Leveling"
+                        ],
+                        "label": "Availability"
+                    }
+                ]
+            },
+            {
+                "kind": "group",
+                "blocks": [
+                    {
+                        "items": [
+                            "Deployment Stamps",
+                            ["Geodes", "Bulkhead"],
+                            "Health Endpoint Monitoring",
+                            "Circuit Breaker"
+                        ],
+                        "label": "High Availability"
+                    }
+                ]
+            },
+            {
+                "kind": "group",
+                "blocks": [
+                    {
+                        "items": [
+                            "Bulkhead",
+                            "Circuit Breaker",
+                            "Compensating Transaction",
+                            "Health Endpoint Monitoring",
+                            "Leader Election",
+                            "Queue-Based Load Leveling",
+                            "Retry",
+                            "Scheduler Agent Supervisor"
+                        ],
+                        "label": "Resiliency"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "center": "Security",
+        "right": [
+            { "kind": "box", "title": "Federated Identity" },
+            { "kind": "box", "title": "Gatekeeper" },
+            { "kind": "box", "title": "Valet Key" }
+        ]
+    }
+]

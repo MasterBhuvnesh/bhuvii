@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import SystemSection from '../../components/SystemSection.astro';
+import { systemDesignSections } from '../../data/system-design-sections';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sortItemsByDateDesc } from '../../utils/data-utils';
+
+const section = systemDesignSections.find((s) => s.id === 'platforms')!;
+const posts = (await getCollection('systemDesign', (post) => post.data.section === 'platforms')).sort(
+    sortItemsByDateDesc
+);
+---
+
+<BaseLayout title={section.title} description={section.description} showHeader={false}>
+    <SystemSection title={section.title} description={section.description} posts={posts} />
+</BaseLayout>

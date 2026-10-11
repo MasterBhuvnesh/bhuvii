@@ -1,0 +1,124 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { sortItemsByDateDesc } from '../../utils/data-utils';
+
+export async function getStaticPaths() {
+    const posts = (await getCollection('systemDesign')).sort(sortItemsByDateDesc);
+    return posts.map((post) => {
+        const sectionPosts = posts.filter((p) => p.data.section === post.data.section);
+        const index = sectionPosts.findIndex((p) => p.id === post.id);
+        return {
+            params: { id: post.id },
+            props: {
+                post,
+                prevPost: index + 1 !== sectionPosts.length ? sectionPosts[index + 1] : null,
+                nextPost: index !== 0 ? sectionPosts[index - 1] : null
+            }
+        };
+    });
+}
+
+type Props = {
+    post: CollectionEntry<'systemDesign'>;
+    prevPost: CollectionEntry<'systemDesign'> | null;
+    nextPost: CollectionEntry<'systemDesign'> | null;
+};
+
+const { post, prevPost, nextPost } = Astro.props;
+const { title, publishDate, updatedDate, excerpt, seo } = post.data;
+const { Content } = await render(post);
+
+// Use the configured `site` to generate an absolute URL
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
+
+function formatDate(date: Date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}.${m}.${d}`;
+}
+---
+
+<BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image} pageType={seo?.pageType ?? 'article'} showHeader={false}>
+    <article class="mb-16 sm:mb-24">
+        <header class="mb-8">
+            <h1 class="font-sans text-3xl leading-tight font-medium sm:text-5xl sm:leading-tight">{title}</h1>
+            <div class="mt-4 text-sm tabular-nums opacity-60">
+                {formatDate(updatedDate ?? publishDate)}
+            </div>
+        </header>
+        <div class="prose article-muted max-w-none">
+            <Content />
+        </div>
+        <div class="mt-8 flex flex-wrap items-center justify-end gap-6 text-sm sm:mt-12 sm:text-base">
+            <Button class="copy-url-button" aria-label="Copy link" data-url={shareUrl} data-tooltip-default="Copy link" data-tooltip-success="Copied">
+                Share
+            </Button>
+        </div>
+    </article>
+    {(prevPost || nextPost) && (
+        <div class="my-16 sm:my-24">
+            <h2 class="mb-12 font-sans text-xl sm:mb-16 sm:text-2xl">Read Next</h2>
+            {nextPost && (
+                <a href={`/system-design/${nextPost.id}/`} class="group mb-10 block sm:mb-12">
+                    <div class="grow">
+                        <p class="font-sans text-lg font-medium">
+                            {nextPost.data.title}{' '}
+                            <span class="ml-2 text-xs font-normal text-main/70 opacity-0 transition group-hover:opacity-100">
+                                read
+                            </span>
+                        </p>
+                        <p class="mt-2 text-sm tabular-nums opacity-60">
+                            {formatDate(nextPost.data.updatedDate ?? nextPost.data.publishDate)}
+                        </p>
+                        {nextPost.data.excerpt && (
+                            <p class="mt-2 leading-relaxed text-main/70">{nextPost.data.excerpt}</p>
+                        )}
+                    </div>
+                </a>
+            )}
+            {prevPost && (
+                <a href={`/system-design/${prevPost.id}/`} class="group mb-10 block sm:mb-12">
+                    <div class="grow">
+                        <p class="font-sans text-lg font-medium">
+                            {prevPost.data.title}{' '}
+                            <span class="ml-2 text-xs font-normal text-main/70 opacity-0 transition group-hover:opacity-100">
+                                read
+                            </span>
+                        </p>
+                        <p class="mt-2 text-sm tabular-nums opacity-60">
+                            {formatDate(prevPost.data.updatedDate ?? prevPost.data.publishDate)}
+                        </p>
+                        {prevPost.data.excerpt && (
+                            <p class="mt-2 leading-relaxed text-main/70">{prevPost.data.excerpt}</p>
+                        )}
+                    </div>
+                </a>
+            )}
+        </div>
+    )}
+</BaseLayout>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const copyUrlButton = document.querySelector('.copy-url-button') as HTMLButtonElement;
+        copyUrlButton?.addEventListener('click', async () => {
+            await copyUrl(copyUrlButton);
+        });
+
+        async function copyUrl(button: HTMLButtonElement) {
+            let url = button.getAttribute('data-url') || '';
+            let label = button.innerText;
+
+            await navigator.clipboard.writeText(url);
+
+            button.innerText = 'Copied';
+
+            setTimeout(() => {
+                button.innerText = label;
+            }, 2500);
+        }
+    });
+</script>

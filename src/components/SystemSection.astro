@@ -1,0 +1,30 @@
+---
+import { type CollectionEntry } from 'astro:content';
+
+type Props = {
+    title: string;
+    description: string;
+    posts: CollectionEntry<'systemDesign'>[];
+};
+
+const { title, description, posts } = Astro.props;
+
+function formatDate(date: Date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}.${m}.${d}`;
+}
+---
+
+<h1 class="mb-4 font-sans text-2xl leading-tight sm:text-4xl">{title}</h1>
+<p class="mb-12 text-sm leading-relaxed text-main/70 sm:mb-16 lg:text-[18px]">{description}</p>
+{posts.map((post) => (
+    <a href={`/system-design/${post.id}/`} class="group mb-5 flex items-baseline gap-4 sm:mb-6">
+        <span class="truncate opacity-60 transition group-hover:opacity-100">{post.data.title}</span>
+        <span aria-hidden="true" class="flex-1 -translate-y-1 border-b opacity-30" />
+        <span class="shrink-0 text-sm tabular-nums opacity-60">
+            {formatDate(post.data.updatedDate ?? post.data.publishDate)}
+        </span>
+    </a>
+))}
