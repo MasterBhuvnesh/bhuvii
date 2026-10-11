@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import ArrowRight from '../assets/icons/arrow-right.svg';
 import { systemDesignSections } from '../data/system-design-sections';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { sortItemsByDateDesc } from '../utils/data-utils';
@@ -18,24 +19,24 @@ const posts = (await getCollection('systemDesign')).sort(sortItemsByDateDesc);
             if (sectionPosts.length === 0) return null;
             return (
                 <div id={section.id} class="group mb-12 scroll-mt-8 sm:mb-16">
-                    <div class="flex items-baseline justify-between gap-4">
-                        <a href={`/system-design/${section.id}`}>
-                            <h2 class="font-sans text-lg font-medium transition group-hover:opacity-60">
-                                {section.title}
-                            </h2>
-                        </a>
-                        {i === 0 && (
-                            <a
-                                href="/system-design-roadmap"
-                                class="shrink-0 rounded-full border border-main px-4 py-1.5 text-sm transition-colors hover:bg-muted"
-                            >
-                                roadmap
-                            </a>
-                        )}
-                    </div>
+                    <a href={`/system-design/${section.id}`}>
+                        <h2 class="font-sans text-lg font-medium transition group-hover:opacity-60">
+                            {section.title}
+                        </h2>
+                    </a>
                     <p class="mt-2 leading-relaxed text-main/70 transition group-hover:opacity-60">{section.description}</p>
                 </div>
             );
         })
     }
+    <div class="group mb-12 scroll-mt-8 sm:mb-16">
+        <a href="/system-design-roadmap" class="inline-flex items-center gap-2">
+            <h2 class="font-sans text-lg font-medium transition group-hover:opacity-60">roadmap</h2>
+            <ArrowRight class="h-4 w-4 fill-current opacity-60 transition group-hover:opacity-100" />
+        </a>
+        <p class="mt-2 leading-relaxed text-main/70 transition group-hover:opacity-60">
+            The building blocks every distributed system stands on — scaling, caching, storage and the trade-offs
+            between them.
+        </p>
+    </div>
 </BaseLayout>
