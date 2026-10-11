@@ -1,0 +1,687 @@
+[
+    {
+        "slug": "api-gateway",
+        "title": "API Gateway",
+        "section": "API Gateway, Message Queues & Rate Limiting"
+    },
+    {
+        "slug": "message-queues",
+        "title": "Message Queues",
+        "section": "API Gateway, Message Queues & Rate Limiting"
+    },
+    {
+        "slug": "rate-limiting",
+        "title": "Rate Limiting",
+        "section": "API Gateway, Message Queues & Rate Limiting"
+    },
+    {
+        "slug": "rate-limiting-algorithm",
+        "title": "Rate Limiting Algorithm",
+        "section": "API Gateway, Message Queues & Rate Limiting"
+    },
+    {
+        "slug": "pub-sub-publish-subscribe",
+        "title": "Pub Sub (Publish Subscribe)",
+        "section": "API Gateway, Message Queues & Rate Limiting"
+    },
+    {
+        "slug": "dead-letter-queues",
+        "title": "Dead Letter Queues",
+        "section": "API Gateway, Message Queues & Rate Limiting"
+    },
+    {
+        "slug": "availability-in-system-design",
+        "title": "Availability in System Design",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "achieving-high-availability",
+        "title": "Achieving High Availability",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "consistency-in-system-design",
+        "title": "Consistency in System Design",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "consistency-pattern",
+        "title": "Consistency pattern",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "cap-theorem",
+        "title": "CAP Theorem",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "pacelc-theorem",
+        "title": "PACELC Theorem",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "reliability-in-system-design",
+        "title": "Reliability in System Design",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "fault-tolerance-in-system-design",
+        "title": "Fault Tolerance in System Design",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "maintainability",
+        "title": "Maintainability",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "acid-vs-base",
+        "title": "ACID vs BASE",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "strong-vs-eventual-consistency",
+        "title": "Strong vs Eventual Consistency",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "circuit-breaker-pattern",
+        "title": "Circuit Breaker Pattern",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "bulkhead-pattern",
+        "title": "Bulkhead Pattern",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "retry-patterns-and-exponential-backoff",
+        "title": "Retry Patterns and Exponential Backoff",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "idempotency",
+        "title": "Idempotency",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "heartbeat",
+        "title": "Heartbeat",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "sla-vs-slo-vs-sli",
+        "title": "SLA vs SLO vs SLI",
+        "section": "Consistency, Availability, Reliability & Maintainability"
+    },
+    {
+        "slug": "software-cost-estimation",
+        "title": "Software Cost Estimation",
+        "section": "Cost & Performance Optimizations"
+    },
+    {
+        "slug": "performance-optimization-techniques",
+        "title": "Performance Optimization Techniques",
+        "section": "Cost & Performance Optimizations"
+    },
+    {
+        "slug": "cost-vs-performance",
+        "title": "Cost Vs Performance",
+        "section": "Cost & Performance Optimizations"
+    },
+    {
+        "slug": "designing-the-database",
+        "title": "Designing the Database",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "types-of-database",
+        "title": "Types of Database",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "choosing-a-database-sql-or-nosql",
+        "title": "Choosing a Database - SQL or NoSQL",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "file-and-database-storage-systems",
+        "title": "File and Database Storage Systems",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "database-replication-in-system-design",
+        "title": "Database Replication in System Design",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "types-of-database-replication",
+        "title": "Types of Database Replication",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "database-sharding",
+        "title": "Database Sharding",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "data-partitioning",
+        "title": "Data Partitioning",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "block-object-and-file-storage",
+        "title": "Block, Object, and File Storage",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "normalization-process-in-dbms",
+        "title": "Normalization Process in DBMS",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "sql-query-optimization",
+        "title": "SQL Query Optimization",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "denormalization-in-databases",
+        "title": "Denormalization in Databases",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "intro-to-redis",
+        "title": "Intro to Redis",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "replication-patterns-master-slave-master-master",
+        "title": "Replication Patterns (Master Slave, Master Master)",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "database-indexing-b-trees-lsm-trees",
+        "title": "Database Indexing (B Trees, LSM Trees)",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "write-ahead-logging-wal",
+        "title": "Write Ahead Logging (WAL)",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "normalization-vs-denormalization",
+        "title": "Normalization vs Denormalization",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "polyglot-persistence",
+        "title": "Polyglot Persistence",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "bloom-filters",
+        "title": "Bloom Filters",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "vector-databases",
+        "title": "Vector Databases",
+        "section": "Databases in Designing Systems"
+    },
+    {
+        "slug": "solid-principles",
+        "title": "SOLID Principles",
+        "section": "Design Principles"
+    },
+    {
+        "slug": "dry-principle",
+        "title": "DRY Principle",
+        "section": "Design Principles"
+    },
+    {
+        "slug": "kiss-principle",
+        "title": "KISS Principle",
+        "section": "Design Principles"
+    },
+    {
+        "slug": "yagni-principle",
+        "title": "YAGNI Principle",
+        "section": "Design Principles"
+    },
+    {
+        "slug": "introduction",
+        "title": "Introduction",
+        "section": "Distributed System Design"
+    },
+    {
+        "slug": "consensus-algorithms-in-distributed-system",
+        "title": "Consensus Algorithms in Distributed System",
+        "section": "Distributed System Design"
+    },
+    {
+        "slug": "distributed-tracing",
+        "title": "Distributed Tracing",
+        "section": "Distributed System Design"
+    },
+    {
+        "slug": "secure-communication-in-distributed-system",
+        "title": "Secure Communication in Distributed System",
+        "section": "Distributed System Design"
+    },
+    {
+        "slug": "design-issues-of-distributed-system",
+        "title": "Design Issues of Distributed System",
+        "section": "Distributed System Design"
+    },
+    {
+        "slug": "gossip-protocol",
+        "title": "Gossip Protocol",
+        "section": "Distributed System Design"
+    },
+    {
+        "slug": "leader-election-paxos-raft",
+        "title": "Leader Election (Paxos, Raft)",
+        "section": "Distributed System Design"
+    },
+    {
+        "slug": "distributed-transactions-saga-pattern",
+        "title": "Distributed Transactions (SAGA Pattern)",
+        "section": "Distributed System Design"
+    },
+    {
+        "slug": "two-phase-commit-2pc",
+        "title": "Two Phase Commit (2PC)",
+        "section": "Distributed System Design"
+    },
+    {
+        "slug": "event-driven-architecture-introduction",
+        "title": "Introduction",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "event-sourcing-pattern",
+        "title": "Event Sourcing Pattern",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "event-sourcing-vs-event-streaming",
+        "title": "Event Sourcing Vs Event Streaming",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "event-driven-apis-in-microservice-architectures",
+        "title": "Event-Driven APIs in Microservice Architectures",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "error-handling-in-event-driven-architecture",
+        "title": "Error Handling in Event-Driven Architecture",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "restore-state-in-an-event-based-message-driven-microservice-architecture-on-failure-scenario",
+        "title": "Restore State in an Event-Based, Message-Driven Microservice Architecture on Failure Scenario",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "event-driven-architecture-patterns-in-cloud-native-applications",
+        "title": "Event-Driven Architecture Patterns in Cloud Native Applications",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "request-driven-vs-event-driven-microservices",
+        "title": "Request-driven Vs Event-driven Microservices",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "event-driven-architecture-vs-microservices-architecture",
+        "title": "Event-Driven Architecture Vs Microservices Architecture",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "message-driven-architecture-vs-event-driven-architecture",
+        "title": "Message-Driven Architecture Vs Event-Driven Architecture",
+        "section": "Event-Driven Architecture"
+    },
+    {
+        "slug": "introduction-to-high-level-design",
+        "title": "Introduction to High Level Design",
+        "section": "High Level Design"
+    },
+    {
+        "slug": "high-level-design-diagram",
+        "title": "High Level Design Diagram",
+        "section": "High Level Design"
+    },
+    {
+        "slug": "latency-and-throughput",
+        "title": "Latency and Throughput",
+        "section": "Latency, Throughput and Caching"
+    },
+    {
+        "slug": "caching-in-system-design",
+        "title": "Caching in System Design",
+        "section": "Latency, Throughput and Caching"
+    },
+    {
+        "slug": "distributed-cache",
+        "title": "Distributed Cache",
+        "section": "Latency, Throughput and Caching"
+    },
+    {
+        "slug": "design-distributed-cache",
+        "title": "Design Distributed Cache",
+        "section": "Latency, Throughput and Caching"
+    },
+    {
+        "slug": "edge-caching",
+        "title": "Edge Caching",
+        "section": "Latency, Throughput and Caching"
+    },
+    {
+        "slug": "cdn-vs-edge-server",
+        "title": "CDN Vs Edge Server",
+        "section": "Latency, Throughput and Caching"
+    },
+    {
+        "slug": "cache-eviction-policies",
+        "title": "Cache Eviction Policies",
+        "section": "Latency, Throughput and Caching"
+    },
+    {
+        "slug": "cold-and-warm-cache-in-system-design",
+        "title": "Cold and Warm Cache in System Design",
+        "section": "Latency, Throughput and Caching"
+    },
+    {
+        "slug": "caching-strategies-cache-aside-write-through-etc",
+        "title": "Caching Strategies (Cache Aside, Write Through, etc.)",
+        "section": "Latency, Throughput and Caching"
+    },
+    {
+        "slug": "load-balancer",
+        "title": "Load Balancer",
+        "section": "Load Balancing"
+    },
+    {
+        "slug": "types-of-load-balancer",
+        "title": "Types of Load Balancer",
+        "section": "Load Balancing"
+    },
+    {
+        "slug": "load-balancing-algorithms",
+        "title": "Load Balancing Algorithms",
+        "section": "Load Balancing"
+    },
+    {
+        "slug": "concurrency-and-parallelism",
+        "title": "Concurrency and Parallelism",
+        "section": "Load Balancing"
+    },
+    {
+        "slug": "stateless-vs-stateful-load-balancing",
+        "title": "Stateless Vs Stateful Load Balancing",
+        "section": "Load Balancing"
+    },
+    {
+        "slug": "load-balancing-vs-failover",
+        "title": "Load Balancing Vs Failover",
+        "section": "Load Balancing"
+    },
+    {
+        "slug": "consistent-hashing",
+        "title": "Consistent Hashing",
+        "section": "Load Balancing"
+    },
+    {
+        "slug": "object-oriented-programming-oop-concepts",
+        "title": "Object-Oriented Programming(OOP) Concepts",
+        "section": "Low Level Design (LLD) - Core Concepts"
+    },
+    {
+        "slug": "modularity-and-interfaces",
+        "title": "Modularity and Interfaces",
+        "section": "Low Level Design (LLD) - Core Concepts"
+    },
+    {
+        "slug": "low-level-design-or-lld",
+        "title": "Low Level Design or LLD",
+        "section": "Low Level Design (LLD) - Core Concepts"
+    },
+    {
+        "slug": "difference-between-high-level-design-hld-and-low-level-design-lld",
+        "title": "Difference between High Level Design(HLD) and Low Level Design(LLD)",
+        "section": "Low Level Design (LLD) - Core Concepts"
+    },
+    {
+        "slug": "system-design-introduction-hld-lld",
+        "title": "System Design Introduction - HLD & LLD",
+        "section": "Overview"
+    },
+    {
+        "slug": "functional-and-non-functional-requirements",
+        "title": "Functional and Non Functional Requirements",
+        "section": "Overview"
+    },
+    {
+        "slug": "communication-protocols",
+        "title": "Communication Protocols",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "domain-name-system",
+        "title": "Domain Name System",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "dns-caching",
+        "title": "DNS Caching",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "flushing-reset-of-dns-cache",
+        "title": "Flushing(Reset) of DNS Cache",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "time-to-live-ttl",
+        "title": "Time to Live(TTL)",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "content-delivery-network-cdn",
+        "title": "Content Delivery Network(CDN)",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "proxies-in-system-design",
+        "title": "Proxies in System Design",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "forward-proxy-vs-reverse-proxy",
+        "title": "Forward Proxy vs Reverse Proxy",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "web-and-application-server",
+        "title": "Web and Application Server",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "long-polling-and-short-polling",
+        "title": "Long Polling and Short Polling",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "websockets",
+        "title": "Websockets",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "tcp-vs-udp",
+        "title": "TCP vs UDP",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "http-2-and-http-3-quic",
+        "title": "HTTP/2 and HTTP/3 (QUIC)",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "grpc-vs-rest",
+        "title": "gRPC vs REST",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "websocket-and-server-sent-events-sse",
+        "title": "WebSocket and Server-Sent Events (SSE)",
+        "section": "Protocols, CDN, Proxies & WebSockets"
+    },
+    {
+        "slug": "scalability-in-system-design",
+        "title": "Scalability in System Design",
+        "section": "Scalability"
+    },
+    {
+        "slug": "horizontal-and-vertical-scaling",
+        "title": "Horizontal and Vertical Scaling",
+        "section": "Scalability"
+    },
+    {
+        "slug": "choosing-the-right-scalability-approach",
+        "title": "Choosing the Right Scalability Approach",
+        "section": "Scalability"
+    },
+    {
+        "slug": "designing-highly-scalable-systems",
+        "title": "Designing Highly Scalable Systems",
+        "section": "Scalability"
+    },
+    {
+        "slug": "primary-scalability-bottlenecks-in-system-design",
+        "title": "Primary Scalability Bottlenecks in System Design",
+        "section": "Scalability"
+    },
+    {
+        "slug": "amdahl-s-law",
+        "title": "Amdahl's Law",
+        "section": "Scalability"
+    },
+    {
+        "slug": "security-measures-in-system-design",
+        "title": "Security Measures in System Design",
+        "section": "Security Measures"
+    },
+    {
+        "slug": "authentication-and-authorization",
+        "title": "Authentication and Authorization",
+        "section": "Security Measures"
+    },
+    {
+        "slug": "secure-socket-layer-ssl-and-transport-layer-security-tls",
+        "title": "Secure Socket Layer (SSL) and Transport Layer Security (TLS)",
+        "section": "Security Measures"
+    },
+    {
+        "slug": "secure-software-development-life-cycle-ssdlc",
+        "title": "Secure Software Development Life Cycle (SSDLC)",
+        "section": "Security Measures"
+    },
+    {
+        "slug": "data-backup-and-disaster-recovery",
+        "title": "Data Backup and Disaster Recovery",
+        "section": "Security Measures"
+    },
+    {
+        "slug": "oauth-2-0-and-oidc",
+        "title": "OAuth 2.0 and OIDC",
+        "section": "Security Measures"
+    },
+    {
+        "slug": "tls-ssl-handshake",
+        "title": "TLS/SSL Handshake",
+        "section": "Security Measures"
+    },
+    {
+        "slug": "zero-trust-security",
+        "title": "Zero Trust Security",
+        "section": "Security Measures"
+    },
+    {
+        "slug": "monolithic-architecture",
+        "title": "Monolithic Architecture",
+        "section": "System Architectural Styles"
+    },
+    {
+        "slug": "microservices",
+        "title": "Microservices",
+        "section": "System Architectural Styles"
+    },
+    {
+        "slug": "monolithic-vs-microservices-architecture",
+        "title": "Monolithic Vs Microservices Architecture",
+        "section": "System Architectural Styles"
+    },
+    {
+        "slug": "event-driven-architecture",
+        "title": "Event-Driven Architecture",
+        "section": "System Architectural Styles"
+    },
+    {
+        "slug": "event-driven-architecture-in-an-e-commerce-system",
+        "title": "Event-Driven Architecture in an E-commerce System",
+        "section": "System Architectural Styles"
+    },
+    {
+        "slug": "serverless-architecture",
+        "title": "Serverless Architecture",
+        "section": "System Architectural Styles"
+    },
+    {
+        "slug": "stateless-and-stateful-systems",
+        "title": "Stateless and Stateful Systems",
+        "section": "System Architectural Styles"
+    },
+    {
+        "slug": "stateful-vs-stateless-architecture",
+        "title": "Stateful Vs Stateless Architecture",
+        "section": "System Architectural Styles"
+    },
+    {
+        "slug": "pub-sub-architecture",
+        "title": "Pub/Sub Architecture",
+        "section": "System Architectural Styles"
+    },
+    {
+        "slug": "unit-testing",
+        "title": "Unit Testing",
+        "section": "Testing"
+    },
+    {
+        "slug": "integration-testing",
+        "title": "Integration Testing",
+        "section": "Testing"
+    },
+    {
+        "slug": "load-testing",
+        "title": "Load Testing",
+        "section": "Testing"
+    },
+    {
+        "slug": "stress-testing",
+        "title": "Stress Testing",
+        "section": "Testing"
+    },
+    {
+        "slug": "ci-cd-pipeline",
+        "title": "CI/CD Pipeline",
+        "section": "Testing"
+    },
+    {
+        "slug": "unified-modeling-language-uml",
+        "title": "Unified Modeling Language (UML)",
+        "section": "UML"
+    }
+]

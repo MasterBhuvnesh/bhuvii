@@ -4,7 +4,8 @@
         "right": [
             {
                 "kind": "box",
-                "title": "System Design Introduction - HLD & LLD"
+                "title": "System Design Introduction - HLD & LLD",
+                "href": "/system-design/system-design-introduction-hld-lld"
             }
         ],
         "left": [
@@ -20,13 +21,15 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Introduction to High Level Design"
+                "title": "Introduction to High Level Design",
+                "href": "/system-design/introduction-to-high-level-design"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "High Level Design Diagram"
+                "title": "High Level Design Diagram",
+                "href": "/system-design/high-level-design-diagram"
             }
         ]
     },
@@ -35,41 +38,50 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Monolithic Architecture"
+                "title": "Monolithic Architecture",
+                "href": "/system-design/monolithic-architecture"
             },
             {
                 "kind": "box",
-                "title": "Microservices"
+                "title": "Microservices",
+                "href": "/system-design/microservices"
             },
             {
                 "kind": "box",
-                "title": "Monolithic Vs Microservices Architecture"
+                "title": "Monolithic Vs Microservices Architecture",
+                "href": "/system-design/monolithic-vs-microservices-architecture"
             },
             {
                 "kind": "box",
-                "title": "Event-Driven Architecture"
+                "title": "Event-Driven Architecture",
+                "href": "/system-design/event-driven-architecture"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Event-Driven Architecture in an E-commerce System"
+                "title": "Event-Driven Architecture in an E-commerce System",
+                "href": "/system-design/event-driven-architecture-in-an-e-commerce-system"
             },
             {
                 "kind": "box",
-                "title": "Serverless Architecture"
+                "title": "Serverless Architecture",
+                "href": "/system-design/serverless-architecture"
             },
             {
                 "kind": "box",
-                "title": "Stateless and Stateful Systems"
+                "title": "Stateless and Stateful Systems",
+                "href": "/system-design/stateless-and-stateful-systems"
             },
             {
                 "kind": "box",
-                "title": "Stateful Vs Stateless Architecture"
+                "title": "Stateful Vs Stateless Architecture",
+                "href": "/system-design/stateful-vs-stateless-architecture"
             },
             {
                 "kind": "box",
-                "title": "Pub/Sub Architecture"
+                "title": "Pub/Sub Architecture",
+                "href": "/system-design/pub-sub-architecture"
             }
         ]
     },
@@ -78,29 +90,35 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Scalability in System Design"
+                "title": "Scalability in System Design",
+                "href": "/system-design/scalability-in-system-design"
             },
             {
                 "kind": "box",
-                "title": "Horizontal and Vertical Scaling"
+                "title": "Horizontal and Vertical Scaling",
+                "href": "/system-design/horizontal-and-vertical-scaling"
             },
             {
                 "kind": "box",
-                "title": "Choosing the Right Scalability Approach"
+                "title": "Choosing the Right Scalability Approach",
+                "href": "/system-design/choosing-the-right-scalability-approach"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Designing Highly Scalable Systems"
+                "title": "Designing Highly Scalable Systems",
+                "href": "/system-design/designing-highly-scalable-systems"
             },
             {
                 "kind": "box",
-                "title": "Primary Scalability Bottlenecks in System Design"
+                "title": "Primary Scalability Bottlenecks in System Design",
+                "href": "/system-design/primary-scalability-bottlenecks-in-system-design"
             },
             {
                 "kind": "box",
-                "title": "Amdahl's Law"
+                "title": "Amdahl's Law",
+                "href": "/system-design/amdahl-s-law"
             }
         ]
     },
@@ -109,46 +127,56 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Latency and Throughput"
+                "title": "Latency and Throughput",
+                "href": "/system-design/latency-and-throughput"
             }
-        ]
+        ],
+        "note": "Latency, Throughput and Caching"
     },
     {
         "center": "Caching",
         "right": [
             {
                 "kind": "box",
-                "title": "Caching in System Design"
+                "title": "Caching in System Design",
+                "href": "/system-design/caching-in-system-design"
             },
             {
                 "kind": "box",
-                "title": "Distributed Cache"
+                "title": "Distributed Cache",
+                "href": "/system-design/distributed-cache"
             },
             {
                 "kind": "box",
-                "title": "Design Distributed Cache"
+                "title": "Design Distributed Cache",
+                "href": "/system-design/design-distributed-cache"
             },
             {
                 "kind": "box",
-                "title": "Edge Caching"
+                "title": "Edge Caching",
+                "href": "/system-design/edge-caching"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "CDN Vs Edge Server"
+                "title": "CDN Vs Edge Server",
+                "href": "/system-design/cdn-vs-edge-server"
             },
             {
                 "kind": "box",
-                "title": "Cache Eviction Policies"
+                "title": "Cache Eviction Policies",
+                "href": "/system-design/cache-eviction-policies"
             },
             {
                 "kind": "box",
-                "title": "Cold and Warm Cache in System Design"
+                "title": "Cold and Warm Cache in System Design",
+                "href": "/system-design/cold-and-warm-cache-in-system-design"
             },
             {
                 "kind": "box",
-                "title": "Caching Strategies (Cache Aside, Write Through, etc.)"
+                "title": "Caching Strategies (Cache Aside, Write Through, etc.)",
+                "href": "/system-design/caching-strategies-cache-aside-write-through-etc"
             }
         ]
     },
@@ -161,18 +189,39 @@
                     {
                         "items": [
                             [
-                                "Load Balancer",
-                                "Types of Load Balancer"
+                                {
+                                    "title": "Load Balancer",
+                                    "href": "/system-design/load-balancer"
+                                },
+                                {
+                                    "title": "Types of Load Balancer",
+                                    "href": "/system-design/types-of-load-balancer"
+                                }
                             ],
                             [
-                                "Load Balancing Algorithms",
-                                "Concurrency and Parallelism"
+                                {
+                                    "title": "Load Balancing Algorithms",
+                                    "href": "/system-design/load-balancing-algorithms"
+                                },
+                                {
+                                    "title": "Concurrency and Parallelism",
+                                    "href": "/system-design/concurrency-and-parallelism"
+                                }
                             ],
                             [
-                                "Stateless Vs Stateful Load Balancing",
-                                "Load Balancing Vs Failover"
+                                {
+                                    "title": "Stateless Vs Stateful Load Balancing",
+                                    "href": "/system-design/stateless-vs-stateful-load-balancing"
+                                },
+                                {
+                                    "title": "Load Balancing Vs Failover",
+                                    "href": "/system-design/load-balancing-vs-failover"
+                                }
                             ],
-                            "Consistent Hashing"
+                            {
+                                "title": "Consistent Hashing",
+                                "href": "/system-design/consistent-hashing"
+                            }
                         ]
                     }
                 ]
@@ -184,29 +233,35 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Consistency in System Design"
+                "title": "Consistency in System Design",
+                "href": "/system-design/consistency-in-system-design"
             },
             {
                 "kind": "box",
-                "title": "Consistency pattern"
+                "title": "Consistency pattern",
+                "href": "/system-design/consistency-pattern"
             },
             {
                 "kind": "box",
-                "title": "CAP Theorem"
+                "title": "CAP Theorem",
+                "href": "/system-design/cap-theorem"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "PACELC Theorem"
+                "title": "PACELC Theorem",
+                "href": "/system-design/pacelc-theorem"
             },
             {
                 "kind": "box",
-                "title": "ACID vs BASE"
+                "title": "ACID vs BASE",
+                "href": "/system-design/acid-vs-base"
             },
             {
                 "kind": "box",
-                "title": "Strong vs Eventual Consistency"
+                "title": "Strong vs Eventual Consistency",
+                "href": "/system-design/strong-vs-eventual-consistency"
             }
         ],
         "parent": "Consistency, Availability, Reliability & Maintainability",
@@ -217,7 +272,8 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Availability in System Design"
+                "title": "Availability in System Design",
+                "href": "/system-design/availability-in-system-design"
             },
             {
                 "kind": "card",
@@ -232,7 +288,8 @@
         "left": [
             {
                 "kind": "box",
-                "title": "Achieving High Availability"
+                "title": "Achieving High Availability",
+                "href": "/system-design/achieving-high-availability"
             }
         ],
         "parent": "Consistency, Availability, Reliability & Maintainability"
@@ -242,33 +299,40 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Reliability in System Design"
+                "title": "Reliability in System Design",
+                "href": "/system-design/reliability-in-system-design"
             },
             {
                 "kind": "box",
-                "title": "Fault Tolerance in System Design"
+                "title": "Fault Tolerance in System Design",
+                "href": "/system-design/fault-tolerance-in-system-design"
             },
             {
                 "kind": "box",
-                "title": "Circuit Breaker Pattern"
+                "title": "Circuit Breaker Pattern",
+                "href": "/system-design/circuit-breaker-pattern"
             },
             {
                 "kind": "box",
-                "title": "Bulkhead Pattern"
+                "title": "Bulkhead Pattern",
+                "href": "/system-design/bulkhead-pattern"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Retry Patterns and Exponential Backoff"
+                "title": "Retry Patterns and Exponential Backoff",
+                "href": "/system-design/retry-patterns-and-exponential-backoff"
             },
             {
                 "kind": "box",
-                "title": "Idempotency"
+                "title": "Idempotency",
+                "href": "/system-design/idempotency"
             },
             {
                 "kind": "box",
-                "title": "Heartbeat"
+                "title": "Heartbeat",
+                "href": "/system-design/heartbeat"
             }
         ],
         "parent": "Consistency, Availability, Reliability & Maintainability"
@@ -278,13 +342,15 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Maintainability"
+                "title": "Maintainability",
+                "href": "/system-design/maintainability"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "SLA vs SLO vs SLI"
+                "title": "SLA vs SLO vs SLI",
+                "href": "/system-design/sla-vs-slo-vs-sli"
             }
         ],
         "parent": "Consistency, Availability, Reliability & Maintainability"
@@ -294,17 +360,20 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Database Replication in System Design"
+                "title": "Database Replication in System Design",
+                "href": "/system-design/database-replication-in-system-design"
             },
             {
                 "kind": "box",
-                "title": "Types of Database Replication"
+                "title": "Types of Database Replication",
+                "href": "/system-design/types-of-database-replication"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Replication Patterns (Master Slave, Master Master)"
+                "title": "Replication Patterns (Master Slave, Master Master)",
+                "href": "/system-design/replication-patterns-master-slave-master-master"
             }
         ],
         "note": "Databases in Designing Systems"
@@ -314,11 +383,13 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Database Sharding"
+                "title": "Database Sharding",
+                "href": "/system-design/database-sharding"
             },
             {
                 "kind": "box",
-                "title": "Data Partitioning"
+                "title": "Data Partitioning",
+                "href": "/system-design/data-partitioning"
             }
         ],
         "left": [
@@ -337,45 +408,55 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Designing the Database"
+                "title": "Designing the Database",
+                "href": "/system-design/designing-the-database"
             },
             {
                 "kind": "box",
-                "title": "Types of Database"
+                "title": "Types of Database",
+                "href": "/system-design/types-of-database"
             },
             {
                 "kind": "box",
-                "title": "Choosing a Database - SQL or NoSQL"
+                "title": "Choosing a Database - SQL or NoSQL",
+                "href": "/system-design/choosing-a-database-sql-or-nosql"
             },
             {
                 "kind": "box",
-                "title": "File and Database Storage Systems"
+                "title": "File and Database Storage Systems",
+                "href": "/system-design/file-and-database-storage-systems"
             },
             {
                 "kind": "box",
-                "title": "Block, Object, and File Storage"
+                "title": "Block, Object, and File Storage",
+                "href": "/system-design/block-object-and-file-storage"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Normalization Process in DBMS"
+                "title": "Normalization Process in DBMS",
+                "href": "/system-design/normalization-process-in-dbms"
             },
             {
                 "kind": "box",
-                "title": "Denormalization in Databases"
+                "title": "Denormalization in Databases",
+                "href": "/system-design/denormalization-in-databases"
             },
             {
                 "kind": "box",
-                "title": "Normalization vs Denormalization"
+                "title": "Normalization vs Denormalization",
+                "href": "/system-design/normalization-vs-denormalization"
             },
             {
                 "kind": "box",
-                "title": "Polyglot Persistence"
+                "title": "Polyglot Persistence",
+                "href": "/system-design/polyglot-persistence"
             },
             {
                 "kind": "box",
-                "title": "Vector Databases"
+                "title": "Vector Databases",
+                "href": "/system-design/vector-databases"
             }
         ]
     },
@@ -384,25 +465,30 @@
         "right": [
             {
                 "kind": "box",
-                "title": "SQL Query Optimization"
+                "title": "SQL Query Optimization",
+                "href": "/system-design/sql-query-optimization"
             },
             {
                 "kind": "box",
-                "title": "Intro to Redis"
+                "title": "Intro to Redis",
+                "href": "/system-design/intro-to-redis"
             },
             {
                 "kind": "box",
-                "title": "Database Indexing (B Trees, LSM Trees)"
+                "title": "Database Indexing (B Trees, LSM Trees)",
+                "href": "/system-design/database-indexing-b-trees-lsm-trees"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Write Ahead Logging (WAL)"
+                "title": "Write Ahead Logging (WAL)",
+                "href": "/system-design/write-ahead-logging-wal"
             },
             {
                 "kind": "box",
-                "title": "Bloom Filters"
+                "title": "Bloom Filters",
+                "href": "/system-design/bloom-filters"
             }
         ]
     },
@@ -411,29 +497,35 @@
         "right": [
             {
                 "kind": "box",
-                "title": "API Gateway"
+                "title": "API Gateway",
+                "href": "/system-design/api-gateway"
             },
             {
                 "kind": "box",
-                "title": "Message Queues"
+                "title": "Message Queues",
+                "href": "/system-design/message-queues"
             },
             {
                 "kind": "box",
-                "title": "Rate Limiting"
+                "title": "Rate Limiting",
+                "href": "/system-design/rate-limiting"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Rate Limiting Algorithm"
+                "title": "Rate Limiting Algorithm",
+                "href": "/system-design/rate-limiting-algorithm"
             },
             {
                 "kind": "box",
-                "title": "Pub Sub (Publish Subscribe)"
+                "title": "Pub Sub (Publish Subscribe)",
+                "href": "/system-design/pub-sub-publish-subscribe"
             },
             {
                 "kind": "box",
-                "title": "Dead Letter Queues"
+                "title": "Dead Letter Queues",
+                "href": "/system-design/dead-letter-queues"
             }
         ]
     },
@@ -442,33 +534,40 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Communication Protocols"
+                "title": "Communication Protocols",
+                "href": "/system-design/communication-protocols"
             },
             {
                 "kind": "box",
-                "title": "Long Polling and Short Polling"
+                "title": "Long Polling and Short Polling",
+                "href": "/system-design/long-polling-and-short-polling"
             },
             {
                 "kind": "box",
-                "title": "Websockets"
+                "title": "Websockets",
+                "href": "/system-design/websockets"
             },
             {
                 "kind": "box",
-                "title": "TCP vs UDP"
+                "title": "TCP vs UDP",
+                "href": "/system-design/tcp-vs-udp"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "HTTP/2 and HTTP/3 (QUIC)"
+                "title": "HTTP/2 and HTTP/3 (QUIC)",
+                "href": "/system-design/http-2-and-http-3-quic"
             },
             {
                 "kind": "box",
-                "title": "gRPC vs REST"
+                "title": "gRPC vs REST",
+                "href": "/system-design/grpc-vs-rest"
             },
             {
                 "kind": "box",
-                "title": "WebSocket and Server-Sent Events (SSE)"
+                "title": "WebSocket and Server-Sent Events (SSE)",
+                "href": "/system-design/websocket-and-server-sent-events-sse"
             }
         ],
         "note": "Protocols, CDN, Proxies & WebSockets"
@@ -478,25 +577,30 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Domain Name System"
+                "title": "Domain Name System",
+                "href": "/system-design/domain-name-system"
             },
             {
                 "kind": "box",
-                "title": "DNS Caching"
+                "title": "DNS Caching",
+                "href": "/system-design/dns-caching"
             },
             {
                 "kind": "box",
-                "title": "Flushing(Reset) of DNS Cache"
+                "title": "Flushing(Reset) of DNS Cache",
+                "href": "/system-design/flushing-reset-of-dns-cache"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Time to Live(TTL)"
+                "title": "Time to Live(TTL)",
+                "href": "/system-design/time-to-live-ttl"
             },
             {
                 "kind": "box",
-                "title": "Content Delivery Network(CDN)"
+                "title": "Content Delivery Network(CDN)",
+                "href": "/system-design/content-delivery-network-cdn"
             }
         ]
     },
@@ -505,17 +609,20 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Proxies in System Design"
+                "title": "Proxies in System Design",
+                "href": "/system-design/proxies-in-system-design"
             },
             {
                 "kind": "box",
-                "title": "Forward Proxy vs Reverse Proxy"
+                "title": "Forward Proxy vs Reverse Proxy",
+                "href": "/system-design/forward-proxy-vs-reverse-proxy"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Web and Application Server"
+                "title": "Web and Application Server",
+                "href": "/system-design/web-and-application-server"
             }
         ]
     },
@@ -528,24 +635,54 @@
                     {
                         "items": [
                             [
-                                "Introduction",
-                                "Event Sourcing Pattern"
+                                {
+                                    "title": "Introduction",
+                                    "href": "/system-design/event-driven-architecture-introduction"
+                                },
+                                {
+                                    "title": "Event Sourcing Pattern",
+                                    "href": "/system-design/event-sourcing-pattern"
+                                }
                             ],
                             [
-                                "Event Sourcing Vs Event Streaming",
-                                "Event-Driven APIs in Microservice Architectures"
+                                {
+                                    "title": "Event Sourcing Vs Event Streaming",
+                                    "href": "/system-design/event-sourcing-vs-event-streaming"
+                                },
+                                {
+                                    "title": "Event-Driven APIs in Microservice Architectures",
+                                    "href": "/system-design/event-driven-apis-in-microservice-architectures"
+                                }
                             ],
                             [
-                                "Error Handling in Event-Driven Architecture",
-                                "Restore State in an Event-Based, Message-Driven Microservice Architecture on Failure Scenario"
+                                {
+                                    "title": "Error Handling in Event-Driven Architecture",
+                                    "href": "/system-design/error-handling-in-event-driven-architecture"
+                                },
+                                {
+                                    "title": "Restore State in an Event-Based, Message-Driven Microservice Architecture on Failure Scenario",
+                                    "href": "/system-design/restore-state-in-an-event-based-message-driven-microservice-architecture-on-failure-scenario"
+                                }
                             ],
                             [
-                                "Event-Driven Architecture Patterns in Cloud Native Applications",
-                                "Request-driven Vs Event-driven Microservices"
+                                {
+                                    "title": "Event-Driven Architecture Patterns in Cloud Native Applications",
+                                    "href": "/system-design/event-driven-architecture-patterns-in-cloud-native-applications"
+                                },
+                                {
+                                    "title": "Request-driven Vs Event-driven Microservices",
+                                    "href": "/system-design/request-driven-vs-event-driven-microservices"
+                                }
                             ],
                             [
-                                "Event-Driven Architecture Vs Microservices Architecture",
-                                "Message-Driven Architecture Vs Event-Driven Architecture"
+                                {
+                                    "title": "Event-Driven Architecture Vs Microservices Architecture",
+                                    "href": "/system-design/event-driven-architecture-vs-microservices-architecture"
+                                },
+                                {
+                                    "title": "Message-Driven Architecture Vs Event-Driven Architecture",
+                                    "href": "/system-design/message-driven-architecture-vs-event-driven-architecture"
+                                }
                             ]
                         ]
                     }
@@ -562,22 +699,49 @@
                     {
                         "items": [
                             [
-                                "Introduction",
-                                "Consensus Algorithms in Distributed System"
+                                {
+                                    "title": "Introduction",
+                                    "href": "/system-design/introduction"
+                                },
+                                {
+                                    "title": "Consensus Algorithms in Distributed System",
+                                    "href": "/system-design/consensus-algorithms-in-distributed-system"
+                                }
                             ],
                             [
-                                "Distributed Tracing",
-                                "Secure Communication in Distributed System"
+                                {
+                                    "title": "Distributed Tracing",
+                                    "href": "/system-design/distributed-tracing"
+                                },
+                                {
+                                    "title": "Secure Communication in Distributed System",
+                                    "href": "/system-design/secure-communication-in-distributed-system"
+                                }
                             ],
                             [
-                                "Design Issues of Distributed System",
-                                "Gossip Protocol"
+                                {
+                                    "title": "Design Issues of Distributed System",
+                                    "href": "/system-design/design-issues-of-distributed-system"
+                                },
+                                {
+                                    "title": "Gossip Protocol",
+                                    "href": "/system-design/gossip-protocol"
+                                }
                             ],
                             [
-                                "Leader Election (Paxos, Raft)",
-                                "Distributed Transactions (SAGA Pattern)"
+                                {
+                                    "title": "Leader Election (Paxos, Raft)",
+                                    "href": "/system-design/leader-election-paxos-raft"
+                                },
+                                {
+                                    "title": "Distributed Transactions (SAGA Pattern)",
+                                    "href": "/system-design/distributed-transactions-saga-pattern"
+                                }
                             ],
-                            "Two Phase Commit (2PC)"
+                            {
+                                "title": "Two Phase Commit (2PC)",
+                                "href": "/system-design/two-phase-commit-2pc"
+                            }
                         ]
                     }
                 ]
@@ -589,21 +753,25 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Object-Oriented Programming(OOP) Concepts"
+                "title": "Object-Oriented Programming(OOP) Concepts",
+                "href": "/system-design/object-oriented-programming-oop-concepts"
             },
             {
                 "kind": "box",
-                "title": "Modularity and Interfaces"
+                "title": "Modularity and Interfaces",
+                "href": "/system-design/modularity-and-interfaces"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Low Level Design or LLD"
+                "title": "Low Level Design or LLD",
+                "href": "/system-design/low-level-design-or-lld"
             },
             {
                 "kind": "box",
-                "title": "Difference between High Level Design(HLD) and Low Level Design(LLD)"
+                "title": "Difference between High Level Design(HLD) and Low Level Design(LLD)",
+                "href": "/system-design/difference-between-high-level-design-hld-and-low-level-design-lld"
             }
         ]
     },
@@ -612,21 +780,25 @@
         "right": [
             {
                 "kind": "box",
-                "title": "SOLID Principles"
+                "title": "SOLID Principles",
+                "href": "/system-design/solid-principles"
             },
             {
                 "kind": "box",
-                "title": "DRY Principle"
+                "title": "DRY Principle",
+                "href": "/system-design/dry-principle"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "KISS Principle"
+                "title": "KISS Principle",
+                "href": "/system-design/kiss-principle"
             },
             {
                 "kind": "box",
-                "title": "YAGNI Principle"
+                "title": "YAGNI Principle",
+                "href": "/system-design/yagni-principle"
             }
         ]
     },
@@ -635,7 +807,8 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Unified Modeling Language (UML)"
+                "title": "Unified Modeling Language (UML)",
+                "href": "/system-design/unified-modeling-language-uml"
             }
         ]
     },
@@ -644,25 +817,30 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Unit Testing"
+                "title": "Unit Testing",
+                "href": "/system-design/unit-testing"
             },
             {
                 "kind": "box",
-                "title": "Integration Testing"
+                "title": "Integration Testing",
+                "href": "/system-design/integration-testing"
             },
             {
                 "kind": "box",
-                "title": "Load Testing"
+                "title": "Load Testing",
+                "href": "/system-design/load-testing"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Stress Testing"
+                "title": "Stress Testing",
+                "href": "/system-design/stress-testing"
             },
             {
                 "kind": "box",
-                "title": "CI/CD Pipeline"
+                "title": "CI/CD Pipeline",
+                "href": "/system-design/ci-cd-pipeline"
             }
         ]
     },
@@ -675,20 +853,44 @@
                     {
                         "items": [
                             [
-                                "Security Measures in System Design",
-                                "Authentication and Authorization"
+                                {
+                                    "title": "Security Measures in System Design",
+                                    "href": "/system-design/security-measures-in-system-design"
+                                },
+                                {
+                                    "title": "Authentication and Authorization",
+                                    "href": "/system-design/authentication-and-authorization"
+                                }
                             ],
                             [
-                                "Secure Socket Layer (SSL) and Transport Layer Security (TLS)",
-                                "Secure Software Development Life Cycle (SSDLC)"
+                                {
+                                    "title": "Secure Socket Layer (SSL) and Transport Layer Security (TLS)",
+                                    "href": "/system-design/secure-socket-layer-ssl-and-transport-layer-security-tls"
+                                },
+                                {
+                                    "title": "Secure Software Development Life Cycle (SSDLC)",
+                                    "href": "/system-design/secure-software-development-life-cycle-ssdlc"
+                                }
                             ],
                             [
-                                "Data Backup and Disaster Recovery",
-                                "OAuth 2.0 and OIDC"
+                                {
+                                    "title": "Data Backup and Disaster Recovery",
+                                    "href": "/system-design/data-backup-and-disaster-recovery"
+                                },
+                                {
+                                    "title": "OAuth 2.0 and OIDC",
+                                    "href": "/system-design/oauth-2-0-and-oidc"
+                                }
                             ],
                             [
-                                "TLS/SSL Handshake",
-                                "Zero Trust Security"
+                                {
+                                    "title": "TLS/SSL Handshake",
+                                    "href": "/system-design/tls-ssl-handshake"
+                                },
+                                {
+                                    "title": "Zero Trust Security",
+                                    "href": "/system-design/zero-trust-security"
+                                }
                             ]
                         ]
                     }
@@ -701,17 +903,20 @@
         "right": [
             {
                 "kind": "box",
-                "title": "Software Cost Estimation"
+                "title": "Software Cost Estimation",
+                "href": "/system-design/software-cost-estimation"
             },
             {
                 "kind": "box",
-                "title": "Performance Optimization Techniques"
+                "title": "Performance Optimization Techniques",
+                "href": "/system-design/performance-optimization-techniques"
             }
         ],
         "left": [
             {
                 "kind": "box",
-                "title": "Cost Vs Performance"
+                "title": "Cost Vs Performance",
+                "href": "/system-design/cost-vs-performance"
             }
         ]
     }

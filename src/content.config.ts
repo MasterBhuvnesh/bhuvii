@@ -31,7 +31,7 @@ const systemDesign = defineCollection({
         z.object({
             title: z.string(),
             excerpt: z.string().optional(),
-            section: z.enum(['fundamentals', 'platforms', 'piyush-garg']),
+            section: z.string(),
             publishDate: z.coerce.date(),
             updatedDate: z.coerce.date().optional(),
             seo: seoSchema(image).optional()

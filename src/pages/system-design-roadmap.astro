@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TopicBox from '../components/TopicBox.astro';
 import roadmapRows from '../data/system-design-sheet.json';
 
 type GroupBlock = { items: (string | string[])[]; label?: string };
@@ -18,7 +19,7 @@ const cardClass =
 const chipClass =
     'rounded-md border-2 border-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))] bg-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))] px-6 py-2 text-center font-medium text-balance text-[var(--bg-main)] sm:max-w-md';
 const stubClass =
-    'hidden w-8 shrink-0 border-t-[3px] border-dotted border-[color-mix(in_oklab,var(--text-main)_40%,transparent)] md:block';
+    'w-8 shrink-0 border-t-[3px] border-dotted border-[color-mix(in_oklab,var(--text-main)_40%,transparent)] max-md:hidden';
 ---
 
 <BaseLayout
@@ -62,16 +63,10 @@ const stubClass =
                             ]}
                         ></div>
                         <div class="flex items-center gap-2 max-md:order-2">
-                            <div class="flex flex-1 flex-col items-center gap-2 md:items-end">
+                            <div class="flex flex-1 flex-col items-stretch gap-2 md:items-end">
                                 {(row.left ?? []).map((child) =>
                                     child.kind === 'box' ? (
-                                        child.href ? (
-                                            <a href={child.href} class={`${boxClass} transition-colors hover:bg-muted`}>
-                                                {child.title}
-                                            </a>
-                                        ) : (
-                                            <div class={boxClass}>{child.title}</div>
-                                        )
+                                        <TopicBox title={child.title} href={child.href} />
                                     ) : child.kind === 'card' ? (
                                         <div class={cardClass}>
                                             {child.lines.map((line) => (
@@ -84,14 +79,20 @@ const stubClass =
                                             {child.blocks.map((block) => (
                                                 <div class="mb-2 last:mb-0">
                                                     {block.items.map((item) =>
-                                                        typeof item === 'string' ? (
+                                                        Array.isArray(item) ? (
+                                                            <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                                                                {item.map((cell) =>
+                                                                    typeof cell === 'string' ? (
+                                                                        <div class={boxClass}>{cell}</div>
+                                                                    ) : (
+                                                                        <TopicBox title={cell.title} href={cell.href} />
+                                                                    )
+                                                                )}
+                                                            </div>
+                                                        ) : typeof item === 'string' ? (
                                                             <div class={`${boxClass} mb-2`}>{item}</div>
                                                         ) : (
-                                                            <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                                                                {item.map((cell) => (
-                                                                    <div class={boxClass}>{cell}</div>
-                                                                ))}
-                                                            </div>
+                                                            <TopicBox title={item.title} href={item.href} class="mb-2" />
                                                         )
                                                     )}
                                                     {block.label && (
@@ -114,16 +115,10 @@ const stubClass =
                             {(row.right ?? []).length > 0 && (
                                 <div aria-hidden="true" class={stubClass}></div>
                             )}
-                            <div class="flex flex-1 flex-col items-center gap-2 md:items-start">
+                            <div class="flex flex-1 flex-col items-stretch gap-2 md:items-start">
                                 {(row.right ?? []).map((child) =>
                                     child.kind === 'box' ? (
-                                        child.href ? (
-                                            <a href={child.href} class={`${boxClass} transition-colors hover:bg-muted`}>
-                                                {child.title}
-                                            </a>
-                                        ) : (
-                                            <div class={boxClass}>{child.title}</div>
-                                        )
+                                        <TopicBox title={child.title} href={child.href} />
                                     ) : child.kind === 'card' ? (
                                         <div class={cardClass}>
                                             {child.lines.map((line) => (
@@ -136,14 +131,20 @@ const stubClass =
                                             {child.blocks.map((block) => (
                                                 <div class="mb-2 last:mb-0">
                                                     {block.items.map((item) =>
-                                                        typeof item === 'string' ? (
+                                                        Array.isArray(item) ? (
+                                                            <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                                                                {item.map((cell) =>
+                                                                    typeof cell === 'string' ? (
+                                                                        <div class={boxClass}>{cell}</div>
+                                                                    ) : (
+                                                                        <TopicBox title={cell.title} href={cell.href} />
+                                                                    )
+                                                                )}
+                                                            </div>
+                                                        ) : typeof item === 'string' ? (
                                                             <div class={`${boxClass} mb-2`}>{item}</div>
                                                         ) : (
-                                                            <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                                                                {item.map((cell) => (
-                                                                    <div class={boxClass}>{cell}</div>
-                                                                ))}
-                                                            </div>
+                                                            <TopicBox title={item.title} href={item.href} class="mb-2" />
                                                         )
                                                     )}
                                                     {block.label && (
@@ -158,7 +159,7 @@ const stubClass =
                         </div>
                     </div>
                     {(row.below ?? []).length > 0 && (
-                        <div class={`mt-8 ${(row.below ?? []).length > 1 ? 'grid gap-4 md:grid-cols-3' : 'flex flex-col'}`}>
+                        <div class={`mt-5 ${(row.below ?? []).length > 1 ? 'grid gap-4 md:grid-cols-3' : 'flex flex-col'}`}>
                             {(row.below ?? []).map(
                                 (child) =>
                                     child.kind === 'group' && (
@@ -166,14 +167,20 @@ const stubClass =
                                             {child.blocks.map((block) => (
                                                 <div class="mb-2 last:mb-0">
                                                     {block.items.map((item) =>
-                                                        typeof item === 'string' ? (
+                                                        Array.isArray(item) ? (
+                                                            <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                                                                {item.map((cell) =>
+                                                                    typeof cell === 'string' ? (
+                                                                        <div class={boxClass}>{cell}</div>
+                                                                    ) : (
+                                                                        <TopicBox title={cell.title} href={cell.href} />
+                                                                    )
+                                                                )}
+                                                            </div>
+                                                        ) : typeof item === 'string' ? (
                                                             <div class={`${boxClass} mb-2`}>{item}</div>
                                                         ) : (
-                                                            <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                                                                {item.map((cell) => (
-                                                                    <div class={boxClass}>{cell}</div>
-                                                                ))}
-                                                            </div>
+                                                            <TopicBox title={item.title} href={item.href} class="mb-2" />
                                                         )
                                                     )}
                                                     {block.label && (

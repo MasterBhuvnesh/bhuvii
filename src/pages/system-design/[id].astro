@@ -6,15 +6,27 @@ import { sortItemsByDateDesc } from '../../utils/data-utils';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('systemDesign')).sort(sortItemsByDateDesc);
+    // Read Next only suggests finished articles (stubs have no excerpt),
+    // otherwise every stub would point at random same-dated siblings.
+    const articles = posts.filter((p) => p.data.excerpt);
     return posts.map((post) => {
-        const sectionPosts = posts.filter((p) => p.data.section === post.data.section);
+        const sectionPosts = articles.filter((p) => p.data.section === post.data.section);
         const index = sectionPosts.findIndex((p) => p.id === post.id);
+        // Stubs aren't in sectionPosts (index -1): point them at the first
+        // finished article in their section, if one exists.
+        const prevPost =
+            index === -1
+                ? (sectionPosts[0] ?? null)
+                : index + 1 !== sectionPosts.length
+                  ? sectionPosts[index + 1]
+                  : null;
+        const nextPost = index <= 0 ? null : sectionPosts[index - 1];
         return {
             params: { id: post.id },
             props: {
                 post,
-                prevPost: index + 1 !== sectionPosts.length ? sectionPosts[index + 1] : null,
-                nextPost: index !== 0 ? sectionPosts[index - 1] : null
+                prevPost,
+                nextPost
             }
         };
     });

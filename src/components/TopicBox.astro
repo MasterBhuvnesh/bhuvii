@@ -1,0 +1,25 @@
+---
+/**
+ * Roadmap topic box: bordered chip, linked when an href is present.
+ * Styling matches the other roadmap boxes exactly.
+ */
+type Props = {
+    title: string;
+    href?: string;
+    class?: string;
+};
+
+const { title, href, class: className } = Astro.props;
+const boxClass =
+    'rounded-md border-2 border-[var(--text-main)] bg-[color-mix(in_oklab,var(--text-main)_8%,transparent)] px-4 py-2 text-center text-sm font-medium text-main';
+---
+
+{
+    href ? (
+        <a href={href} class:list={['block', boxClass, 'transition-colors hover:bg-muted', className]}>
+            {title}
+        </a>
+    ) : (
+        <div class:list={[boxClass, className]}>{title}</div>
+    )
+}
