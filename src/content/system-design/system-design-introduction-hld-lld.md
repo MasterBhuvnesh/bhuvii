@@ -2,8 +2,8 @@
 title: System Design Introduction - HLD & LLD
 excerpt: What system design is, where it sits in the SDLC, and how high-level and low-level design split the work, with real-world examples.
 section: fundamentals
-publishDate: 'Sep 29 2026'
-updatedDate: 'Sep 29 2026'
+publishDate: 'Oct 11 2026'
+updatedDate: 'Oct 11 2026'
 ---
 
 System Design is the process of planning the architecture of a software system based on its requirements. It defines how different components of the system are structured and work together to achieve the desired functionality.

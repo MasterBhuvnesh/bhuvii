@@ -2,8 +2,8 @@
 title: Introduction to High Level Design
 excerpt: The overall structure of a system planned up front, how components work together, and the HLD roadmap from capacity estimation to logging.
 section: fundamentals
-publishDate: 'Sep 29 2026'
-updatedDate: 'Sep 29 2026'
+publishDate: 'Oct 11 2026'
+updatedDate: 'Oct 11 2026'
 ---
 
 High-level design or HLD is an initial step in the development of applications where the overall structure of a system is planned. Mainly focuses on how different components of the system work together without getting to know about internal coding and implementation.

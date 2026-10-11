@@ -2,7 +2,7 @@
 title: 'Designing a URL Shortener'
 excerpt: Tiny URLs look trivial until you need billions of them. Key generation, collision handling, custom aliases and analytics at scale.
 section: platforms
-publishDate: 'Sep 12 2026'
+publishDate: 'Oct 11 2026'
 ---
 
 Design a high-scale URL shortening service like TinyURL or Bitly. Covers Base62 encoding, hash collision resolution, 301 vs 302 redirects, DB schema, and edge caching.
