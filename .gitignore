@@ -17,5 +17,11 @@ pnpm-debug.log*
 .env
 .env.production
 
+# google sheets oauth (client_secret + token are passwords)
+.secrets/
+token.json
+client_secret.json
+scripts/
+
 # macOS-specific files
 .DS_Store
