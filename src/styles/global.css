@@ -126,6 +126,29 @@ html.dark {
         @apply font-medium;
     }
 
+    /* Inline code reads as underlined body text instead of a pill.
+       Fenced blocks (pre > code) keep their monospace styling. */
+    .prose :where(:not(pre) > code) {
+        background: none;
+        border: none;
+        padding: 0;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+        text-decoration-color: color-mix(in oklab, var(--text-main) 40%, transparent);
+    }
+    .prose :where(:not(pre) > code)::before,
+    .prose :where(:not(pre) > code)::after {
+        content: none;
+    }
+    .prose :where(:not(pre) > code):hover {
+        text-decoration-color: var(--text-main);
+    }
+
     .prose :where(th) {
         color: var(--tw-prose-headings);
         @apply font-medium;
