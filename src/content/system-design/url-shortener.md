@@ -60,14 +60,8 @@ Use a hash function to generate a short URL, mapping long URLs to unique shorten
 
 ```mermaid
 flowchart TB
-    U[User] --> S[POST /shorten]
-    S --> DB[(Database)]
-    DB --> C{Exists?}
-    C -->|Yes| R1[Return shortURL]
-    C -->|No| G[Generate ID]
-    G --> B[Base62 encode]
-    B --> ST[Store mapping]
-    ST --> R2[Return shortURL]
+    U[User] --> S[POST /shorten] --> DB[(Database)] --> C{Exists?} -->|Yes| R1[Return shortURL]
+    R1 ---|No| G[Generate ID] --> B[Base62 encode] --> ST[Store mapping] --> R2[Return shortURL]
 ```
 
 ## 3. Step 2: Deep Dive into Design
@@ -120,12 +114,10 @@ Use hash functions like CRC32, MD5, or SHA-1. One approach is to collect the fir
 
 ```mermaid
 flowchart TB
-    V[Visitor] --> L[GET /shortUrl]
-    L --> CA[(Cache)]
-    CA -->|Hit| RD[302 redirect]
-    CA -->|Miss| DB2[(Database)]
-    DB2 --> RD
+    V[Visitor] --> L[GET /shortUrl] --> CA[(Cache)] -->|Hit| RD1[302 redirect]
+    RD1 ---|Miss| DB2[(Database)] --> RD2[302 redirect]
 ```
+
 
 ## 4. Additional Considerations
 

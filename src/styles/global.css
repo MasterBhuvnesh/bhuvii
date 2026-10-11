@@ -242,6 +242,7 @@ html.dark {
     fill: color-mix(in oklab, var(--text-main) 80%, var(--bg-main)) !important;
     stroke: color-mix(in oklab, var(--text-main) 80%, var(--bg-main)) !important;
     rx: 6px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
 }
 /* Inverted chip labels. */
 .mm svg .node span,
@@ -253,12 +254,12 @@ html.dark {
 /* Dimmed edges, markers and edge labels. */
 .mm svg .flowchart-link,
 .mm svg .edge-thickness-normal {
-    stroke: color-mix(in oklab, var(--text-main) 40%, transparent) !important;
+    stroke: color-mix(in oklab, var(--text-main) 60%, transparent) !important;
 }
 .mm svg .marker,
 .mm svg .arrowMarkerPath {
-    fill: color-mix(in oklab, var(--text-main) 40%, transparent) !important;
-    stroke: color-mix(in oklab, var(--text-main) 40%, transparent) !important;
+    fill: color-mix(in oklab, var(--text-main) 60%, transparent) !important;
+    stroke: color-mix(in oklab, var(--text-main) 60%, transparent) !important;
 }
 .mm svg .edgeLabel {
     background-color: transparent !important;
@@ -269,7 +270,9 @@ html.dark {
 .mm svg .edgeLabel span {
     color: var(--text-main) !important;
     background-color: transparent !important;
-    font-size: 1rem !important;
+    /* Keep at/below Mermaid's measured size: the SVG foreignObject box
+       is sized for ~12px text, anything bigger overflows and clips. */
+    font-size: 12px !important;
     text-shadow:
         0 0 3px var(--bg-main),
         0 0 8px var(--bg-main),
@@ -280,6 +283,99 @@ html.dark {
 }
 .mm svg .edgeLabel rect {
     fill: transparent !important;
+}
+
+/* xychart-beta: transparent plot background + theme-aware ink.
+   Kroki/Mermaid hardcodes white bg, dark text (#131300) and pastel
+   line colors inside the SVG, so override them with site vars.
+   Vars flip with html.dark, so one SVG serves both themes. */
+.mm svg rect.background {
+    fill: transparent !important;
+}
+.mm svg .chart-title text,
+.mm svg .legend .label text,
+.mm svg .bottom-axis .label text,
+.mm svg .left-axis .label text {
+    fill: var(--text-main) !important;
+}
+.mm svg .bottom-axis .axis-line path,
+.mm svg .bottom-axis .ticks path,
+.mm svg .left-axis .axisl-line path,
+.mm svg .left-axis .ticks path {
+    stroke: var(--text-main) !important;
+}
+.mm svg .line-plot-0 path,
+.mm svg .legend .markers path:first-child {
+    stroke: var(--text-main) !important;
+    stroke-width: 2.5px !important;
+}
+.mm svg .line-plot-1 path,
+.mm svg .legend .markers path:last-child {
+    stroke: color-mix(in oklab, var(--text-main) 55%, transparent) !important;
+    stroke-width: 2.5px !important;
+    stroke-dasharray: 6 4 !important;
+}
+
+/* sequenceDiagram: solid theme chips + inverted labels like the
+   flowchart nodes, dimmed lifelines/edges. Vars flip with html.dark,
+   so one SVG serves both themes. */
+.mm svg rect.actor {
+    fill: color-mix(in oklab, var(--text-main) 80%, var(--bg-main)) !important;
+    stroke: color-mix(in oklab, var(--text-main) 80%, var(--bg-main)) !important;
+}
+.mm svg text.actor,
+.mm svg text.actor tspan {
+    fill: var(--bg-main) !important;
+    stroke: none !important;
+}
+.mm svg .messageText {
+    fill: var(--text-main) !important;
+}
+.mm svg .messageLine0,
+.mm svg .messageLine1 {
+    stroke: var(--text-main) !important;
+}
+.mm svg .actor-line {
+    stroke: color-mix(in oklab, var(--text-main) 45%, transparent) !important;
+}
+.mm svg marker path:not([fill='none']) {
+    fill: var(--text-main) !important;
+}
+.mm svg marker path {
+    stroke: var(--text-main) !important;
+}
+
+/* Hand-built flow diagrams: theme chips, dim edges, DM Sans throughout. */
+.flow-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.flow-svg text {
+    font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+}
+.flow-svg .fnode rect,
+.flow-svg .fnode polygon {
+    fill: var(--text-main);
+    stroke: var(--text-main);
+}
+.flow-svg .fnode text {
+    fill: var(--bg-main);
+    font-size: 14px;
+    font-weight: 500;
+}
+.flow-svg .fedge {
+    fill: none;
+    stroke: color-mix(in oklab, var(--text-main) 40%, transparent);
+    stroke-width: 2;
+}
+.flow-svg .flabel {
+    fill: var(--text-main);
+    opacity: 0.6;
+    font-size: 12px;
+}
+.flow-svg marker path {
+    fill: color-mix(in oklab, var(--text-main) 40%, transparent);
 }
 
 /* Roadmap-style flow nodes for hand-built diagrams in articles. */
