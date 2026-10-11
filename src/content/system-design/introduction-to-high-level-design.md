@@ -170,7 +170,7 @@ For example, in an e-commerce system, users can filter products based on:
 
 Filtering is commonly used in APIs, databases, search systems, and data-processing applications to reduce the amount of data returned and improve efficiency.
 
-Example: `GET /products?category=electronics&minPrice=10000&maxPrice=50000`
+Example: `GET /products?category=electronics`
 
 This request returns only products that match the specified filters.
 
