@@ -1,97 +1,19 @@
-# Dante - Astro & Tailwind CSS Theme by justgoodui.com
+# Bhuvii — Portfolio
 
-Dante is a single-author blog and portfolio theme for Astro.js. Featuring a minimal, slick, responsive and content-focused design. For more Astro.js themes please check [justgoodui.com](https://justgoodui.com/).
+Personal portfolio and system design publication for Bhuvnesh Verma, built with Astro.js and Tailwind CSS v4. Live at https://bhuvneshverma.dev.
 
-![Dante Astro.js Theme](public/dante-preview.jpg)
+## What is on the site
 
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JustGoodUI/dante-astro-theme)
+- Profile block with bio, social links, live GitHub stats and a real contribution heatmap (fetched at build time, zero client JS)
+- System Design section with long-form articles (URL shortener deep-dive, caching, scaling, chat systems, interview roadmap)
+- Visual system design roadmap rendered from a Google Sheet, theme aware with light and dark support
+- Mermaid diagrams rendered to inline SVG at build time, LaTeX math via self-hosted KaTeX
+- DM Sans self-hosted via Fontsource, no third-party font requests
+- Dark and light color mode, RSS feed, sitemap, SEO metadata
 
-Clicking the button above ☝️ will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
+## Commands
 
-## Theme Features:
-
-- ✅ Dark and light color mode
-- ✅ Hero section with bio
-- ✅ Portfolio collection
-- ✅ Pagination support
-- ✅ Post tags support
-- ✅ Subscription form
-- ✅ View transitions
-- ✅ Tailwind CSS
-- ✅ Mobile-first responsive layout
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Optimized images using Astro’s `Image` component
-
-## Template Integrations
-
-- Tailwind CSS (via `@tailwindcss/vite`) - https://docs.astro.build/en/guides/styling/#tailwind
-- @astrojs/sitemap - https://docs.astro.build/en/guides/integrations-guide/sitemap/
-- @astrojs/mdx - https://docs.astro.build/en/guides/markdown-content/
-- @astrojs/rss - https://docs.astro.build/en/guides/rss/
-
-## ⚙️ Configuration Notes
-
-### `site-config.ts`
-
-All site-wide data and theme options are stored in `src/data/site-config.ts`. It provides a single configuration object used throughout the theme for navigation, branding, hero content, social links, and more.
-
-You can update this file to customize:
-
-- Site identity — title, description, avatar, subtitle, and default social share image
-- Navigation — header and footer navigation links
-- Social links — URLs for supported platforms
-- Hero section — title, text, image, and action buttons
-- Newsletter subscription — form settings suitable for Mailchimp, Formspree, ConvertKit, or other form-based providers. The form supports a custom action URL, configurable email and hidden fields, and an optional honeypot field for spam protection.
-- Pagination — posts per page for blog and projects listings
-
-Images can be referenced either as imports from `src/assets/` (for optimized Astro images) or as string paths from the `public/` directory.
-
-### Images
-
-The theme uses a `CustomImage` component that automatically displays images using Astro’s optimized `<Image />` or a standard `<img>` tag depending on the source.
-
-- Content collection images (used in posts or pages) must be stored in `src/assets/` since they use Astro’s `image()` schema.
-- Site-config images (like the avatar, hero image, or social preview) can either be imported from `src/assets/` for optimization or referenced directly from `public/` if you prefer not to optimize them.
-
-## Project Structure
-
-Inside of Dante Astro theme, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── assets/
-│   │   ├── icons/
-│   │   └── images/
-│   ├── components/
-│   ├── content/
-│   ├── data/
-│   ├── layouts/
-│   ├── pages/
-│   ├── styles/
-│   ├── utils/
-│   ├── content.config.ts
-│   └── types.ts
-├── astro.config.mjs
-├── package.json
-├── README.md
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro (`.astro`) components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## Astro.js Commands
-
-Requires Node.js `22.12.0` or newer. All commands are run from the root of the project, from a terminal:
+Requires Node.js `22.12.0` or newer. All commands run from the project root:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -103,19 +25,47 @@ Requires Node.js `22.12.0` or newer. All commands are run from the root of the p
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## Want to learn more about Astro.js?
+## Roadmap data
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The roadmap page reads `src/data/system-design-sheet.json`, generated from the Google Sheet:
 
-## Credits
+1. Put the OAuth client in `.secrets/` (see `scripts/sheets_auth.py`) and the spreadsheet id in `.secrets/spreadsheet_id.txt`
+2. Run `python3 scripts/build_sheet_roadmap.py`
+3. Rebuild the site
 
-- Demo content generate with [Chat GPT](https://chat.openai.com/)
-- Images for demo content from [Unsplash](https://unsplash.com/)
+`scripts/` and `.secrets/` are gitignored and never committed. `src/data/system-design-roadmap.json` is a saved snapshot kept for reference.
 
-## Astro Themes by Just Good UI
+## Writing articles
 
-- [Ovidius](https://github.com/JustGoodUI/ovidius-astro-theme) is a free single author blog theme.
+Add Markdown files to `src/content/system-design/` with frontmatter:
 
-## License
+```yaml
+title: My Article
+excerpt: One line summary.
+section: fundamentals
+publishDate: 'Oct 11 2026'
+```
 
-Licensed under the [GPL-3.0](https://github.com/JustGoodUI/dante-astro-theme/blob/main/LICENSE) license.
+`section` is one of `fundamentals`, `platforms` or `piyush-garg`. Fenced ` ```mermaid ` blocks become inline SVG diagrams and `$...$` becomes math automatically.
+
+## Project structure
+
+```text
+├── public/                  # static assets (favicon, profile photo)
+├── scripts/                 # local-only sheet tooling (gitignored)
+├── docs/                    # reference PDFs
+├── src/
+│   ├── assets/icons/
+│   ├── components/
+│   ├── content/system-design/
+│   ├── data/                # site config, section lists, roadmap JSON
+│   ├── layouts/
+│   ├── pages/
+│   ├── styles/
+│   └── utils/
+├── rehype-kroki.mjs         # build-time diagram plugin
+├── astro.config.mjs
+└── package.json
+```
+
+Site-wide metadata (title, description, nav, social image) lives in `src/data/site-config.ts`.
