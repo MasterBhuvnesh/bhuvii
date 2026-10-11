@@ -6,39 +6,17 @@ import { sortItemsByDateDesc } from '../../utils/data-utils';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('systemDesign')).sort(sortItemsByDateDesc);
-    // Read Next only suggests finished articles (stubs have no excerpt),
-    // otherwise every stub would point at random same-dated siblings.
-    const articles = posts.filter((p) => p.data.excerpt);
-    return posts.map((post) => {
-        const sectionPosts = articles.filter((p) => p.data.section === post.data.section);
-        const index = sectionPosts.findIndex((p) => p.id === post.id);
-        // Stubs aren't in sectionPosts (index -1): point them at the first
-        // finished article in their section, if one exists.
-        const prevPost =
-            index === -1
-                ? (sectionPosts[0] ?? null)
-                : index + 1 !== sectionPosts.length
-                  ? sectionPosts[index + 1]
-                  : null;
-        const nextPost = index <= 0 ? null : sectionPosts[index - 1];
-        return {
-            params: { id: post.id },
-            props: {
-                post,
-                prevPost,
-                nextPost
-            }
-        };
-    });
+    return posts.map((post) => ({
+        params: { id: post.id },
+        props: { post }
+    }));
 }
 
 type Props = {
     post: CollectionEntry<'systemDesign'>;
-    prevPost: CollectionEntry<'systemDesign'> | null;
-    nextPost: CollectionEntry<'systemDesign'> | null;
 };
 
-const { post, prevPost, nextPost } = Astro.props;
+const { post } = Astro.props;
 const { title, publishDate, updatedDate, excerpt, seo } = post.data;
 const { Content } = await render(post);
 
@@ -70,47 +48,6 @@ function formatDate(date: Date) {
             </Button>
         </div>
     </article>
-    {(prevPost || nextPost) && (
-        <div class="my-16 sm:my-24">
-            <h2 class="mb-12 font-sans text-xl sm:mb-16 sm:text-2xl">Read Next</h2>
-            {nextPost && (
-                <a href={`/system-design/${nextPost.id}/`} class="group mb-10 block sm:mb-12">
-                    <div class="grow">
-                        <p class="font-sans text-lg font-medium">
-                            {nextPost.data.title}{' '}
-                            <span class="ml-2 text-xs font-normal text-main/70 opacity-0 transition group-hover:opacity-100">
-                                read
-                            </span>
-                        </p>
-                        <p class="mt-2 text-sm tabular-nums opacity-60">
-                            {formatDate(nextPost.data.updatedDate ?? nextPost.data.publishDate)}
-                        </p>
-                        {nextPost.data.excerpt && (
-                            <p class="mt-2 leading-relaxed text-main/70">{nextPost.data.excerpt}</p>
-                        )}
-                    </div>
-                </a>
-            )}
-            {prevPost && (
-                <a href={`/system-design/${prevPost.id}/`} class="group mb-10 block sm:mb-12">
-                    <div class="grow">
-                        <p class="font-sans text-lg font-medium">
-                            {prevPost.data.title}{' '}
-                            <span class="ml-2 text-xs font-normal text-main/70 opacity-0 transition group-hover:opacity-100">
-                                read
-                            </span>
-                        </p>
-                        <p class="mt-2 text-sm tabular-nums opacity-60">
-                            {formatDate(prevPost.data.updatedDate ?? prevPost.data.publishDate)}
-                        </p>
-                        {prevPost.data.excerpt && (
-                            <p class="mt-2 leading-relaxed text-main/70">{prevPost.data.excerpt}</p>
-                        )}
-                    </div>
-                </a>
-            )}
-        </div>
-    )}
 </BaseLayout>
 
 <script>
