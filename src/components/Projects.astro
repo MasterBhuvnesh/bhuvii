@@ -1,0 +1,91 @@
+---
+/**
+ * Selected projects on the landing page. Details sourced from GitHub
+ * (MasterBhuvnesh/WCL, /skarm, /studzee); kept static so the page
+ * ships zero client JS.
+ */
+
+type Project = {
+    name: string;
+    description: string;
+    repo: string;
+    live?: string;
+    liveLabel?: string;
+    language: string;
+    tags: string[];
+};
+
+const projects: Project[] = [
+    {
+        name: 'Skarm',
+        description:
+            'Production-ready issue tracking platform for modern teams — real-time Kanban boards, AI-powered triage, multi-team workspaces, cycles, and keyboard-first workflows.',
+        repo: 'https://github.com/MasterBhuvnesh/skarm',
+        live: 'https://skarm.vercel.app/',
+        language: 'TypeScript',
+        tags: ['Next.js', 'Convex', 'Realtime', 'AI Triage']
+    },
+    {
+        name: 'Studzee',
+        description:
+            'Document-to-learning SaaS: upload documents once, study as lessons, summaries, and quizzes across mobile and desktop — one TypeScript API (MongoDB, PostgreSQL, Redis) with AI generation on the roadmap.',
+        repo: 'https://github.com/MasterBhuvnesh/studzee',
+        live: 'https://studzee.in/',
+        language: 'TypeScript',
+        tags: ['Expo', 'Kubernetes', 'Redis', 'Clerk']
+    },
+    {
+        name: 'WCL',
+        description:
+            'Enterprise-grade examination infrastructure powering live assessments at RBU Nagpur. Secure Electron exam client, admin console, hall ticket & result portals, real-time monitoring, Bun/Express APIs, PostgreSQL, Redis, and automated evaluation pipeline.',
+        repo: 'https://github.com/MasterBhuvnesh/WCL',
+        live: 'https://rbuexam.in',
+        language: 'TypeScript',
+        tags: ['Electron', 'Next.js', 'PostgreSQL', 'Redis', 'AWS']
+    }
+];
+---
+
+<section class="mb-16 w-full sm:mb-24" aria-label="Projects">
+    <p class="text-sm tracking-widest text-main/70 uppercase">Projects</p>
+    <p class="text-main/70 mt-2 text-sm">A few of the projects I'm working on right now.</p>
+    <div class="mt-4 grid gap-4 md:grid-cols-3">
+        {
+            projects.map((project) => (
+                <article class="flex flex-col rounded-md border-2 border-[color-mix(in_oklab,var(--text-main)_35%,transparent)] bg-muted px-5 py-4 transition-transform hover:-translate-y-0.5">
+                    <h3 class="text-balance font-medium text-main">
+                        <a
+                            href={project.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="underline decoration-2 underline-offset-2 decoration-[color-mix(in_oklab,var(--text-main)_40%,transparent)] hover:decoration-[var(--text-main)]"
+                        >
+                            {project.name}
+                        </a>
+                    </h3>
+                    <p class="mt-2 flex-1 text-sm leading-relaxed text-main/70">{project.description}</p>
+                    <div class="mt-3 flex flex-wrap gap-1.5">
+                        {project.tags.map((tag) => (
+                            <span class="rounded border border-[color-mix(in_oklab,var(--text-main)_40%,transparent)] px-1.5 py-0.5 text-xs text-main/70">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                    <p class="mt-3 flex items-center gap-3 text-xs text-main/70">
+                        <span>{project.language}</span>
+                        {project.live && (
+                            <a
+                                href={project.live}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="underline underline-offset-2 hover:text-main"
+                            >
+                                {project.liveLabel ?? 'Live'}
+                            </a>
+                        )}
+                    </p>
+                </article>
+            ))
+        }
+    </div>
+</section>

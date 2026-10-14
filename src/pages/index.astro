@@ -1,9 +1,11 @@
 ---
 import Profile from '../components/Profile.astro';
+import Projects from '../components/Projects.astro';
 import siteConfig from '../data/site-config';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout description={siteConfig.description}>
     <Profile />
+    <Projects />
 </BaseLayout>
