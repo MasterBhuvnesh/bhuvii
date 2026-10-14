@@ -1,0 +1,105 @@
+---
+/**
+ * Experience timeline on the landing page. Content sourced from the CV
+ * reference data in D:/Resume/SKILL.md — real entries and attested
+ * numbers only, no fabrication.
+ */
+
+type Role = {
+    initials: string;
+    title: string;
+    org: string;
+    type: string;
+    dates: string;
+    summary?: string;
+    bullets: string[];
+};
+
+const roles: Role[] = [
+    {
+        initials: 'W',
+        title: 'Lead Developer (Contract)',
+        org: 'WCL Examination Platform',
+        type: 'Contract',
+        dates: 'Jun 2026 – Jul 2026',
+        bullets: [
+            'Led 4-app PSU exam platform for ~600 candidates (~530 appeared): Electron kiosk client, Next.js admin control room, Next.js hall-ticket portal, Bun + Express + Drizzle API',
+            'Engineered server-authoritative 100-MCQ exam engine with instant grading, negative marking, auto-submit, Redis-cached hot state, idempotent upserts, rate-limiting, PgBouncer',
+            'Validated scale with 1,200+ concurrent rehearsal + k6 to 10,000 VUs; overcame node-kill / network-drop / RDS failover drills with zero lost answers',
+            'Codified full AWS stack in Terraform (ALB, EC2, RDS, ElastiCache, S3, Route 53) — single apply in ~2m 40s vs days manual',
+            'Automated GitHub Actions → Docker Hub → Watchtower deploys with versioned releases + self-updating Electron; deployed Prometheus + Grafana + Loki observability'
+        ]
+    },
+    {
+        initials: 'A',
+        title: 'Software Engineer (Contract)',
+        org: 'Absolv Networking (US) / ANDI',
+        type: 'Contract',
+        dates: 'Mar 2026 – Present',
+        bullets: [
+            'Contributed in 3-dev milestone team to relationship-intelligence platform with Gmail/Calendar ingestion into per-user isolated stores',
+            'Built retrieval indexing + tiered contact knowledge graph for relationship scoring',
+            'Implemented MCP AI agent for contact analysis + review-first outreach drafts via Gmail tools, no autonomous sending',
+            'Delivered beta readiness with Docker, IaC for beta env, CI/CD + update pipeline',
+            'Monitored reliability with Prometheus + Grafana error tracking + extraction benchmarking'
+        ]
+    },
+    {
+        initials: 'V',
+        title: 'Software Development Intern',
+        org: 'Volvox / Sobers',
+        type: 'Internship',
+        dates: 'Jan 2026 – Feb 2026',
+        bullets: [
+            'Built Expo Notifications + AWS SNS push pipeline for production recovery app on iOS + Android',
+            'Automated EAS builds + publishing to Play Store / App Store via CI/CD',
+            'Accelerated pipeline by 28% with linting + version-control gates',
+            'Reengineered API data layer with TanStack Query caching, dedupe, background refetch'
+        ]
+    }
+];
+---
+
+<section class="mb-16 w-full sm:mb-24" aria-label="Experience">
+    <p class="text-sm tracking-widest text-main/70 uppercase">Experience</p>
+    <ol class="mt-6 space-y-12">
+        {
+            roles.map((role) => (
+                <li class="flex gap-4">
+                    <div class="flex flex-col items-center">
+                        <span
+                            aria-hidden="true"
+                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))] text-lg font-medium text-[var(--bg-main)]"
+                        >
+                            {role.initials}
+                        </span>
+                        <span
+                            aria-hidden="true"
+                            class="mt-2 w-[2px] flex-1 bg-[color-mix(in_oklab,var(--text-main)_20%,transparent)]"
+                        />
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                            <h3 class="font-medium">{role.title}</h3>
+                            <p class="text-sm text-main/70">{role.dates}</p>
+                        </div>
+                        <p class="mt-0.5 text-sm text-main/70">
+                            {role.org} <span class="mx-1">·</span> {role.type}
+                        </p>
+                        {role.summary && (
+                            <p class="mt-2 text-sm leading-relaxed text-main/70">{role.summary}</p>
+                        )}
+                        <ul class:list={['space-y-1', role.summary ? 'mt-2' : 'mt-3']}>
+                            {role.bullets.map((bullet) => (
+                                <li class="flex gap-2 text-sm leading-relaxed text-main/70">
+                                    <span aria-hidden="true" class="mt-[7px] h-1.5 w-1.5 shrink-0 bg-[color-mix(in_oklab,var(--text-main)_45%,transparent)]" />
+                                    <span>{bullet}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </li>
+            ))
+        }
+    </ol>
+</section>

@@ -6,6 +6,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { sortItemsByDateDesc } from '../utils/data-utils';
 
 const posts = (await getCollection('systemDesign')).sort(sortItemsByDateDesc);
+
+// Hidden from the listing while they are being worked on — re-enable later.
+// (Kept in system-design-sections.ts because the section routes read from there.)
+const hiddenSections = ['platforms', 'piyush-garg'];
 ---
 
 <BaseLayout
@@ -15,6 +19,7 @@ const posts = (await getCollection('systemDesign')).sort(sortItemsByDateDesc);
 >
     {
         systemDesignSections.map((section, i) => {
+            if (hiddenSections.includes(section.id)) return null;
             const sectionPosts = posts.filter((post) => post.data.section === section.id);
             if (sectionPosts.length === 0) return null;
             return (

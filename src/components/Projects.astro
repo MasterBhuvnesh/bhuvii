@@ -11,6 +11,8 @@ type Project = {
     repo: string;
     live?: string;
     liveLabel?: string;
+    status?: string;
+    statusNote?: string;
     language: string;
     tags: string[];
 };
@@ -32,16 +34,19 @@ const projects: Project[] = [
         repo: 'https://github.com/MasterBhuvnesh/studzee',
         live: 'https://studzee.in/',
         language: 'TypeScript',
-        tags: ['Expo', 'Kubernetes', 'Redis', 'Clerk']
+        tags: ['Expo', 'Kubernetes', 'Redis', 'Clerk', 'Lambda']
     },
     {
         name: 'WCL',
         description:
-            'Enterprise-grade examination infrastructure powering live assessments at RBU Nagpur. Secure Electron exam client, admin console, hall ticket & result portals, real-time monitoring, Bun/Express APIs, PostgreSQL, Redis, and automated evaluation pipeline.',
+            'Enterprise-grade examination infrastructure powering live assessments at RBU Nagpur for Western Coalfields Limited. Secure Electron exam client, admin console, hall ticket & result portals, real-time monitoring, Bun/Express APIs, PostgreSQL, Redis, and automated evaluation pipeline.',
         repo: 'https://github.com/MasterBhuvnesh/WCL',
         live: 'https://rbuexam.in',
         language: 'TypeScript',
-        tags: ['Electron', 'Next.js', 'PostgreSQL', 'Redis', 'AWS']
+        tags: ['Electron', 'Next.js', 'PostgreSQL', 'Redis', 'AWS'],
+        status: 'Not hosted',
+        statusNote:
+            'Built for Western Coalfields Limited, Nagpur as an examination platform. Hosting has since been handed over, so a live demo is unavailable.'
     }
 ];
 ---
@@ -73,16 +78,47 @@ const projects: Project[] = [
                     </div>
                     <p class="mt-3 flex items-center gap-3 text-xs text-main/70">
                         <span>{project.language}</span>
-                        {project.live && (
-                            <a
-                                href={project.live}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="underline underline-offset-2 hover:text-main"
-                            >
-                                {project.liveLabel ?? 'Live'}
-                            </a>
-                        )}
+                        {project.live &&
+                            (project.statusNote ? (
+                                <span class="group relative inline-flex" tabindex="0">
+                                    <span class="inline-flex cursor-help items-center gap-1.5 underline underline-offset-2">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-amber-400"></span>
+                                        {project.status ?? project.liveLabel ?? 'Live'}
+                                    </span>
+                                    <span class="pointer-events-none absolute bottom-full left-0 z-10 mb-2 hidden w-64 rounded-lg bg-[color-mix(in_oklab,var(--text-main)_90%,var(--bg-main))] p-3 text-left shadow-xl group-hover:block group-focus-within:block">
+                                        <span class="flex items-center justify-between gap-2 text-xs font-medium text-[var(--bg-main)]">
+                                            <span class="inline-flex items-center gap-1.5">
+                                                <svg
+                                                    class="h-3.5 w-3.5"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    aria-hidden="true"
+                                                >
+                                                    <circle cx="12" cy="12" r="10" />
+                                                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                                </svg>
+                                                westerncoal.in
+                                            </span>
+                                            <span aria-hidden="true">↗</span>
+                                        </span>
+                                        <span class="mt-2 block text-sm leading-relaxed text-[color-mix(in_oklab,var(--bg-main)_85%,transparent)]">
+                                            "{project.statusNote}"
+                                        </span>
+                                    </span>
+                                </span>
+                            ) : (
+                                <a
+                                    href={project.live}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-main"
+                                >
+                                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                                    {project.liveLabel ?? 'Live'}
+                                </a>
+                            ))}
                     </p>
                 </article>
             ))

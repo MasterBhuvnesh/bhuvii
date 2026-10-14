@@ -14,11 +14,11 @@ const siteConfig: SiteConfig = {
         {
             text: 'System Design',
             href: '/system-design'
-        },
-        {
-            text: 'Design Patterns',
-            href: '/design-patterns'
         }
+        // {
+        //     text: 'Design Patterns',
+        //     href: '/design-patterns'
+        // }
     ]
 };
 
