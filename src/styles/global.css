@@ -341,6 +341,21 @@ html.dark {
 .mm svg marker path:not([fill='none']) {
     fill: var(--text-main) !important;
 }
+/* Contribution graph: carousel feel — hidden scrollbar with a
+   fade on the trailing edge to hint swipeability. */
+.graph-scroll {
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 767px) {
+    .graph-scroll {
+        mask-image: linear-gradient(to right, black calc(100% - 3rem), transparent 100%);
+    }
+}
+.graph-scroll::-webkit-scrollbar {
+    display: none;
+}
+
 .mm svg marker path {
     stroke: var(--text-main) !important;
 }
