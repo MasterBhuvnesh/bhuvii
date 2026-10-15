@@ -6,7 +6,7 @@
  */
 
 type Role = {
-    initials: string;
+    icon: string;
     title: string;
     org: string;
     type: string;
@@ -15,9 +15,15 @@ type Role = {
     bullets: string[];
 };
 
+const buildingIcon =
+    'M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4M9 10h.01M15 10h.01M9 14h.01M15 14h.01';
+const networkIcon =
+    'M6 6a2 2 0 1 0 0-.01M18 6a2 2 0 1 0 0-.01M12 18a2 2 0 1 0 0-.01M7.5 7l3 8M16.5 7l-3 8M8 6h8';
+const mobileIcon = 'M7 2h10a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM11 18h2';
+
 const roles: Role[] = [
     {
-        initials: 'W',
+        icon: buildingIcon,
         title: 'Lead Developer (Contract)',
         org: 'WCL Examination Platform',
         type: 'Contract',
@@ -31,7 +37,7 @@ const roles: Role[] = [
         ]
     },
     {
-        initials: 'A',
+        icon: networkIcon,
         title: 'Software Engineer (Contract)',
         org: 'Absolv Networking (US) / ANDI',
         type: 'Contract',
@@ -45,7 +51,7 @@ const roles: Role[] = [
         ]
     },
     {
-        initials: 'V',
+        icon: mobileIcon,
         title: 'Software Development Intern',
         org: 'Volvox / Sobers',
         type: 'Internship',
@@ -69,9 +75,19 @@ const roles: Role[] = [
                     <div class="flex flex-col items-center">
                         <span
                             aria-hidden="true"
-                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))] text-lg font-medium text-[var(--bg-main)]"
+                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-[color-mix(in_oklab,var(--text-main)_60%,var(--bg-main))]"
                         >
-                            {role.initials}
+                            <svg
+                                class="h-5 w-5 text-[var(--bg-main)]"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d={role.icon} />
+                            </svg>
                         </span>
                         <span
                             aria-hidden="true"

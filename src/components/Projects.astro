@@ -4,9 +4,14 @@
  * (MasterBhuvnesh/WCL, /skarm, /studzee); kept static so the page
  * ships zero client JS.
  */
+import { Image } from 'astro:assets';
+import skarmImg from '../assets/images/skarm.png';
+import studzeeImg from '../assets/images/studzee.png';
+import wclImg from '../assets/images/wcl.png';
 
 type Project = {
     name: string;
+    image: ImageMetadata;
     description: string;
     repo: string;
     live?: string;
@@ -20,6 +25,7 @@ type Project = {
 const projects: Project[] = [
     {
         name: 'Skarm',
+        image: skarmImg,
         description:
             'Production-ready issue tracking platform for modern teams — real-time Kanban boards, AI-powered triage, multi-team workspaces, cycles, and keyboard-first workflows.',
         repo: 'https://github.com/MasterBhuvnesh/skarm',
@@ -29,15 +35,17 @@ const projects: Project[] = [
     },
     {
         name: 'Studzee',
+        image: studzeeImg,
         description:
             'Document-to-learning SaaS: upload documents once, study as lessons, summaries, and quizzes across mobile and desktop — one TypeScript API (MongoDB, PostgreSQL, Redis) with AI generation on the roadmap.',
         repo: 'https://github.com/MasterBhuvnesh/studzee',
         live: 'https://studzee.in/',
         language: 'TypeScript',
-        tags: ['Expo', 'Kubernetes', 'Redis', 'Clerk', 'Lambda']
+        tags: ['Expo', 'Kubernetes', 'Redis', 'Clerk', 'Lambda', 'AI']
     },
     {
         name: 'WCL',
+        image: wclImg,
         description:
             'Enterprise-grade examination infrastructure powering live assessments at RBU Nagpur for Western Coalfields Limited. Secure Electron exam client, admin console, hall ticket & result portals, real-time monitoring, Bun/Express APIs, PostgreSQL, Redis, and automated evaluation pipeline.',
         repo: 'https://github.com/MasterBhuvnesh/WCL',
@@ -58,7 +66,14 @@ const projects: Project[] = [
         {
             projects.map((project) => (
                 <article class="flex flex-col rounded-md border-2 border-[color-mix(in_oklab,var(--text-main)_35%,transparent)] bg-muted px-5 py-4 transition-transform hover:-translate-y-0.5">
-                    <h3 class="text-balance font-medium text-main">
+                    <h3 class="flex items-center gap-3 text-balance font-medium text-main">
+                        <Image
+                            src={project.image}
+                            alt={`${project.name} logo`}
+                            width={44}
+                            height={44}
+                            class="h-11 w-11 shrink-0 rounded-md border border-[color-mix(in_oklab,var(--text-main)_20%,transparent)] object-cover"
+                        />
                         <a
                             href={project.repo}
                             target="_blank"

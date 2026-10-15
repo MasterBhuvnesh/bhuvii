@@ -345,6 +345,50 @@ html.dark {
     stroke: var(--text-main) !important;
 }
 
+/* Tech icon tiles: fixed light tile in both themes, lift on hover
+   with a small dark name tooltip (CSS-only, no JS). */
+.tech-icons .tech-icon {
+    position: relative;
+    display: flex;
+    height: 2.75rem;
+    width: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    background: #e9e6dd;
+    transition: transform 0.18s ease;
+}
+.tech-icons .tech-icon:hover {
+    transform: translateY(-4px) scale(1.06);
+}
+html.dark .tech-icons .tech-icon {
+    background: color-mix(in oklab, var(--text-main) 14%, var(--bg-main));
+}
+.tech-icons .tech-icon::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    border-radius: 0.375rem;
+    background: color-mix(in oklab, var(--text-main) 90%, var(--bg-main));
+    color: var(--bg-main);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0.25rem 0.6rem;
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+.tech-icons .tech-icon:hover::after,
+.tech-icons .tech-icon:focus-visible::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
 /* Hand-built flow diagrams: theme chips, dim edges, DM Sans throughout. */
 .flow-svg {
     display: block;

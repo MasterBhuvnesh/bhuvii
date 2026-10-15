@@ -1,0 +1,100 @@
+---
+/**
+ * Let's Connect closer on the landing page.
+ */
+
+const email = 'bhuvneshverma2904@gmail.com';
+const phone = '+91 83905 45534';
+const phoneHref = 'tel:+918390545534';
+
+const socials = [
+    { label: 'GitHub', href: 'https://github.com/MasterBhuvnesh' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bhuvneshverma/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/vermaji_2904/' }
+];
+---
+
+<section class="mx-auto mb-16 w-full max-w-2xl text-center sm:mb-24" aria-label="Contact">
+    <h2 class="font-sans text-2xl leading-tight">Let's Connect</h2>
+    <p class="text-main/70 mt-3 leading-relaxed">
+        Currently open to internships, freelance work, and collaborations.
+    </p>
+    <div class="mt-6 grid gap-4 text-left sm:grid-cols-2">
+        <a
+            href={`mailto:${email}`}
+            class="flex items-center gap-4 rounded-md bg-muted px-5 py-4 transition-transform hover:-translate-y-0.5"
+        >
+            <span
+                aria-hidden="true"
+                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))]"
+            >
+                <svg
+                    class="h-5 w-5 text-[var(--bg-main)]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path
+                        d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                    />
+                </svg>
+            </span>
+            <span>
+                <span class="block font-medium">Email Me</span>
+                <span class="text-main/70 mt-0.5 block text-sm break-all">{email}</span>
+            </span>
+        </a>
+        <a
+            href={phoneHref}
+            class="flex items-center gap-4 rounded-md bg-muted px-5 py-4 transition-transform hover:-translate-y-0.5"
+        >
+            <span
+                aria-hidden="true"
+                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))]"
+            >
+                <svg
+                    class="h-5 w-5 text-[var(--bg-main)]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path
+                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                    />
+                </svg>
+            </span>
+            <span>
+                <span class="block font-medium">Call Me</span>
+                <span class="text-main/70 mt-0.5 block text-sm">{phone}</span>
+            </span>
+        </a>
+    </div>
+    <p class="mt-10 font-medium">Join my network:</p>
+    <p class="mt-3 flex items-center justify-center gap-5 text-sm">
+        {
+            socials.map((social, i) => (
+                <>
+                    {i > 0 && (
+                        <span aria-hidden="true" class="text-main/30">
+                            ·
+                        </span>
+                    )}
+                    <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-main/70 underline decoration-2 underline-offset-2 decoration-[color-mix(in_oklab,var(--text-main)_40%,transparent)] hover:text-main hover:decoration-[var(--text-main)]"
+                    >
+                        {social.label}
+                    </a>
+                </>
+            ))
+        }
+    </p>
+</section>
