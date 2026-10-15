@@ -10,7 +10,8 @@ const phoneHref = 'tel:+918390545534';
 const socials = [
     { label: 'GitHub', href: 'https://github.com/MasterBhuvnesh' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bhuvneshverma/' },
-    { label: 'Instagram', href: 'https://www.instagram.com/vermaji_2904/' }
+    { label: 'Instagram', href: 'https://www.instagram.com/vermaji_2904/' },
+    { label: 'RSS', href: '/rss.xml' }
 ];
 ---
 
@@ -87,8 +88,8 @@ const socials = [
                     )}
                     <a
                         href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        target={social.href.startsWith('http') ? '_blank' : undefined}
+                        rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         class="text-main/70 underline decoration-2 underline-offset-2 decoration-[color-mix(in_oklab,var(--text-main)_40%,transparent)] hover:text-main hover:decoration-[var(--text-main)]"
                     >
                         {social.label}
