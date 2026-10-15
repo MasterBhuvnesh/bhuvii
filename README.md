@@ -4,7 +4,9 @@ Personal portfolio and system design publication for Bhuvnesh Verma, built with 
 
 ## What is on the site
 
-- Profile block with bio, social links, live GitHub stats and a real contribution heatmap (fetched at build time, zero client JS)
+- Profile block with bio, key skills, social links, live GitHub stats and a real contribution heatmap (fetched at build time, zero client JS)
+- Projects section (WCL exam platform, Skarm issue tracker, Studzee ed-tech) with repo links, stack tags, and live-site status
+- Experience timeline from CV data, Skills with capability chips + brand-icon Technologies row, Let's Connect contact closer
 - System Design section with long-form articles (URL shortener deep-dive, caching, scaling, chat systems, interview roadmap)
 - Visual system design roadmap rendered from a Google Sheet, theme aware with light and dark support
 - Mermaid diagrams rendered to inline SVG at build time, LaTeX math via self-hosted KaTeX
@@ -55,8 +57,9 @@ publishDate: 'Oct 11 2026'
 ├── scripts/                 # local-only sheet tooling (gitignored)
 ├── docs/                    # reference PDFs
 ├── src/
-│   ├── assets/icons/
-│   ├── components/
+│   ├── assets/icons/        # svg icon components
+│   ├── assets/images/       # project logos/screenshots
+│   ├── components/          # Profile, Projects, Experience, Skills, Contact, ...
 │   ├── content/system-design/
 │   ├── data/                # site config, section lists, roadmap JSON
 │   ├── layouts/
