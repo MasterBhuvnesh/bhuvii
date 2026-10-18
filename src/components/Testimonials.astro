@@ -1,0 +1,47 @@
+---
+/**
+ * Third-party validation on the landing page. Quotes are published
+ * verbatim, exactly as provided.
+ */
+
+type Quote = {
+    text: string;
+    name: string;
+    org: string;
+};
+
+const quotes: Quote[] = [
+    {
+        text: 'During WCL exam windows, Bhuvnesh was the person who made the platform predictable — deployment discipline before the exam, and fast, composed triage during it. Our exam-day operations were noticeably calmer for it.',
+        name: 'Client',
+        org: 'WCL Examination Platform · Ramdeobaba University'
+    },
+    {
+        text: 'Bhuvnesh owned architecture and delivery end to end on our AI platform — he designs agents around failure modes, not just features, and he left us with a system we could actually operate.',
+        name: 'Soham Kinhikar',
+        org: 'Absolv Networking (ANDI)'
+    }
+];
+---
+
+<section class="mb-16 w-full sm:mb-24" aria-label="Testimonials">
+    <p class="text-sm tracking-widest text-main/70 uppercase">Testimonials</p>
+    <div class="mt-6 grid gap-4">
+        {
+            quotes.map((quote) => (
+                <figure class="rounded-md bg-muted px-5 py-4">
+                    <blockquote class="text-main/80 text-sm leading-relaxed">
+                        “{quote.text}”
+                    </blockquote>
+                    <figcaption class="mt-3 text-sm">
+                        <span class="font-medium">{quote.name}</span>
+                        <span class="text-main/70">
+                            {' '}
+                            <span class="mx-1">·</span> {quote.org}
+                        </span>
+                    </figcaption>
+                </figure>
+            ))
+        }
+    </div>
+</section>
