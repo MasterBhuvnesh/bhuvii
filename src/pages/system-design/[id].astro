@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
+import siteConfig from '../../data/site-config';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('systemDesign')).sort(sortItemsByDateDesc);
@@ -23,6 +24,22 @@ const { Content } = await render(post);
 // Use the configured `site` to generate an absolute URL
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
 
+// BlogPosting structured data for search engines.
+const authorId = new URL('/#bhuvneshverma', Astro.site).toString();
+const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: excerpt ?? '',
+    url: shareUrl,
+    mainEntityOfPage: shareUrl,
+    datePublished: publishDate.toISOString(),
+    dateModified: (updatedDate ?? publishDate).toISOString(),
+    image: new URL('/og.png', Astro.site).toString(),
+    author: { '@type': 'Person', '@id': authorId, name: 'Bhuvnesh Verma', url: siteConfig.website },
+    publisher: { '@id': authorId }
+};
+
 function formatDate(date: Date) {
     const y = date.getFullYear();
     const m = String(date.getMonth() + 1).padStart(2, '0');
@@ -32,6 +49,7 @@ function formatDate(date: Date) {
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image} pageType={seo?.pageType ?? 'article'} showHeader={false}>
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     <article class="mb-16 sm:mb-24">
         <header class="mb-8">
             <h1 class="font-sans text-3xl leading-tight font-medium sm:text-5xl sm:leading-tight">{title}</h1>

@@ -45,6 +45,43 @@ if (image?.src) {
  * Trailing slashes follow the user's Astro configuration.
  */
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+/**
+ * Site-wide JSON-LD: Person + WebSite so search engines connect the
+ * portfolio, the author, and the profiles. Factual data only.
+ */
+const personId = new URL('/#bhuvneshverma', Astro.site).toString();
+const siteSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Person',
+            '@id': personId,
+            name: 'Bhuvnesh Verma',
+            url: siteConfig.website,
+            image: new URL('/bhuvii.png', Astro.site).toString(),
+            jobTitle: 'Full-Stack & App Engineer',
+            description: siteConfig.description,
+            address: { '@type': 'PostalAddress', addressLocality: 'Nagpur', addressCountry: 'IN' },
+            alumniOf: {
+                '@type': 'CollegeOrUniversity',
+                name: 'Shri Ramdeobaba College of Engineering and Management'
+            },
+            sameAs: [
+                'https://github.com/MasterBhuvnesh',
+                'https://www.linkedin.com/in/bhuvneshverma/',
+                'https://www.instagram.com/vermaji_2904/'
+            ]
+        },
+        {
+            '@type': 'WebSite',
+            '@id': new URL('/', Astro.site).toString(),
+            url: siteConfig.website,
+            name: 'Bhuvnesh Verma',
+            publisher: { '@id': personId }
+        }
+    ]
+};
 ---
 
 <!-- High Priority Global Metadata -->
@@ -87,3 +124,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 {description && <meta name="twitter:description" content={description} />}
 {resolvedImage?.src && <meta name="twitter:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage.alt} />}
+
+<!-- Structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
