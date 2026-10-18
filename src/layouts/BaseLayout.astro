@@ -9,6 +9,7 @@ import Nav from '../components/Nav.astro';
 export type Props = HeadProps & { showHeader?: boolean };
 
 const { showHeader: _showHeader = true, ...head } = Astro.props;
+const year = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -31,10 +32,32 @@ const { showHeader: _showHeader = true, ...head } = Astro.props;
             <main class="mx-auto w-full max-w-3xl grow">
                 <slot />
             </main>
+            <footer class="mx-auto w-full max-w-3xl pb-10">
+                <div
+                    class="text-main/70 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t pt-6 text-sm border-[color-mix(in_oklab,var(--text-main)_15%,transparent)]"
+                >
+                    <p>&copy; {year} Bhuvnesh Verma</p>
+                    <p class="flex items-center gap-4">
+                        <a
+                            href="https://github.com/MasterBhuvnesh"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="hover:text-main transition-colors"
+                        >
+                            GitHub
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/bhuvneshverma/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="hover:text-main transition-colors"
+                        >
+                            LinkedIn
+                        </a>
+                        <a href="/rss.xml" class="hover:text-main transition-colors">RSS</a>
+                    </p>
+                </div>
+            </footer>
         </div>
-        <div
-            class="pointer-events-none fixed inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-[var(--bg-main)] to-transparent"
-            aria-hidden="true"
-        ></div>
     </body>
 </html>

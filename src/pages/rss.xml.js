@@ -10,6 +10,7 @@ export async function GET(context) {
         title: siteConfig.title,
         description: siteConfig.description,
         site: context.site,
+        customData: `<language>en-us</language><lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`,
         items: articles.map((item) => ({
             title: item.data.title,
             description: item.data.excerpt,
