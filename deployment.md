@@ -1,6 +1,7 @@
 # Deployment — Cloudflare Workers (static assets)
 
-Status: **planned, not implemented yet.** Decision made 2026-10-18: deploy the
+Status: **live on Workers since 2026-10-18.** Remaining: step 3 (Workers Builds Git
+connect) and the optional follow-ups. Decision made 2026-10-18: deploy the
 portfolio to **Cloudflare Workers** using static assets (assets-only Worker, no
 worker script). Do **not** use Cloudflare Pages.
 
@@ -38,7 +39,7 @@ time), so an assets-only Worker serves everything with no application code.
 
 ### 1. Repo changes
 
-- [ ] Add `wrangler.jsonc` at repo root:
+- [x] Add `wrangler.jsonc` at repo root:
 
 ```jsonc
 {
@@ -55,18 +56,15 @@ time), so an assets-only Worker serves everything with no application code.
 (`html_handling` is the default; listed explicitly for documentation. Flip to
 `"404-page"` once a 404 page exists — see follow-ups.)
 
-- [ ] `npm i -D wrangler@^4`
-- [ ] `package.json` scripts: `"deploy": "wrangler deploy"` (and optionally
+- [x] `npm i -D wrangler@^4`
+- [x] `package.json` scripts: `"deploy": "wrangler deploy"` (and optionally
   `"preview": "wrangler dev"`)
 
 ### 2. First deploy (local, one-time)
 
-```sh
-npm run build
-npx wrangler deploy
-```
+Deployed 2026-10-18: `https://portfolio.bhuvneshverma2904.workers.dev` (232 assets).
 
-- [ ] Verify the `*.workers.dev` URL serves `/`, `/rss.xml`, `/sitemap-index.xml`,
+- [x] Verify the `*.workers.dev` URL serves `/`, `/rss.xml`, `/sitemap-index.xml`,
   `/robots.txt`, and one deep article page (trailing-slash HTML).
 
 ### 3. Workers Builds (push-to-deploy)
@@ -86,15 +84,14 @@ Dashboard: Workers & Pages → `portfolio` → Settings → Build → connect
 **Order matters** — the Worker custom domain must be the apex, so clear the
 conflicting records first:
 
-- [ ] Delete both A records (`54.149.79.189`, `34.216.117.25`)
-- [ ] Attach custom domain: Workers & Pages → `portfolio` → Settings →
+- [x] Delete both A records (`54.149.79.189`, `34.216.117.25`)
+- [x] Attach custom domain: Workers & Pages → `portfolio` → Settings →
   Domains & Routes → Add Custom Domain → `bhuvneshverma.dev`
-  (Cloudflare auto-creates the proxied apex record. Can also be done later via
-  the Cloudflare MCP tools / API.)
+  (Done via API 2026-10-18; cert issued, domain enabled.)
 
 ### 5. Post-cutover verification
 
-- [ ] `https://bhuvneshverma.dev/` renders (check `cf-ray` header, no old origin)
+- [x] `https://bhuvneshverma.dev/` renders (verified 200, cf-ray, home title)
 - [ ] Deep link, e.g. `/system-design/introduction-to-high-level-design/`
 - [ ] `/rss.xml`, `/sitemap-index.xml`, `/robots.txt` all respond
 - [ ] Fonts/images load; light + dark themes intact
