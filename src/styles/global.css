@@ -404,6 +404,88 @@ html.dark .tech-icons .tech-icon {
     transform: translateX(-50%) translateY(0);
 }
 
+/* Motion: CSS-only — staggered load-in above the fold, scroll-driven
+   reveals below it (progressively enhanced), smooth theme swap.
+   fill-mode "backwards" on .reveal keeps hover transforms working
+   after the reveal completes. Zero client JS. */
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+body {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.profile-stagger > * {
+    animation: rise 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.profile-stagger > *:nth-child(2) {
+    animation-delay: 60ms;
+}
+.profile-stagger > *:nth-child(3) {
+    animation-delay: 120ms;
+}
+.profile-stagger > *:nth-child(4) {
+    animation-delay: 180ms;
+}
+.profile-stagger > *:nth-child(5) {
+    animation-delay: 240ms;
+}
+.profile-stagger > *:nth-child(6) {
+    animation-delay: 300ms;
+}
+.profile-stagger > *:nth-child(7) {
+    animation-delay: 360ms;
+}
+.profile-stagger > *:nth-child(8) {
+    animation-delay: 420ms;
+}
+.profile-stagger > *:nth-child(9) {
+    animation-delay: 480ms;
+}
+.profile-stagger > *:nth-child(10) {
+    animation-delay: 540ms;
+}
+
+@supports (animation-timeline: view()) {
+    .reveal {
+        animation: rise 1.2s linear backwards;
+        animation-timeline: view();
+        animation-range: entry 0% entry 40%;
+    }
+}
+
+.project-card {
+    transition-property: transform, box-shadow;
+}
+.project-card:hover {
+    box-shadow: 0 10px 30px color-mix(in oklab, var(--text-main) 14%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .profile-stagger > * {
+        animation: none;
+    }
+    .reveal {
+        animation: none !important;
+    }
+    body {
+        transition: none;
+    }
+    .project-card:hover {
+        box-shadow: none;
+    }
+}
+
 /* Hand-built flow diagrams: theme chips, dim edges, DM Sans throughout. */
 .flow-svg {
     display: block;
