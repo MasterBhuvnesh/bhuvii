@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bhuvneshverma.dev/sitemap-index.xml
