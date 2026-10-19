@@ -37,6 +37,8 @@ The roadmap page reads `src/data/system-design-sheet.json`, generated from the G
 
 `scripts/` and `.secrets/` are gitignored and never committed. `src/data/system-design-roadmap.json` is a saved snapshot kept for reference.
 
+Full how-it-works for the sheet access, auth, and regeneration: [docs/google-sheet-pipeline.md](docs/google-sheet-pipeline.md)
+
 ## Writing articles
 
 Add Markdown files to `src/content/system-design/` with frontmatter:
