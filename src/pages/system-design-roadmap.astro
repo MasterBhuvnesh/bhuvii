@@ -20,12 +20,25 @@ const chipClass =
     'rounded-md border-2 border-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))] bg-[color-mix(in_oklab,var(--text-main)_80%,var(--bg-main))] px-6 py-2 text-center font-medium text-balance text-[var(--bg-main)] sm:max-w-md';
 const stubClass =
     'w-8 shrink-0 border-t-[3px] border-dotted border-[color-mix(in_oklab,var(--text-main)_40%,transparent)] max-md:hidden';
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const pageSchema = {
+    '@type': 'WebPage',
+    '@id': `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: 'System Design Roadmap',
+    isPartOf: { '@id': new URL('/#website', Astro.site).toString() },
+    author: { '@id': new URL('/#bhuvneshverma', Astro.site).toString() },
+    inLanguage: 'en',
+    dateModified: new Date().toISOString()
+};
 ---
 
 <BaseLayout
     title="System Design Roadmap"
     description="A visual system design roadmap: what to learn and in what order, from scaling and caching to databases, consistency, messaging and security."
     showHeader={false}
+    schema={[pageSchema]}
 >
     <h1 class="mb-4 font-sans text-2xl leading-tight sm:text-4xl">System Design Roadmap</h1>
     <p class="mb-12 leading-relaxed text-main/70 sm:mb-16">

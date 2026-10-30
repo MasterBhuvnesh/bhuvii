@@ -61,7 +61,7 @@ const siteSchema = {
             '@type': 'Person',
             '@id': personId,
             name: 'Bhuvnesh Verma',
-            url: siteConfig.website,
+            url: new URL('/', Astro.site).toString(),
             image: new URL('/bhuvii-512.jpg', Astro.site).toString(),
             jobTitle: 'Cloud-Native Full-Stack & AI Engineer',
             description: siteConfig.description,
@@ -92,7 +92,7 @@ const siteSchema = {
         {
             '@type': 'WebSite',
             '@id': new URL('/#website', Astro.site).toString(),
-            url: siteConfig.website,
+            url: new URL('/', Astro.site).toString(),
             name: 'Bhuvnesh Verma',
             publisher: { '@id': personId }
         },

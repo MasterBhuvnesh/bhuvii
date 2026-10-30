@@ -1,6 +1,8 @@
 {
     "name": "portfolio",
     "compatibility_date": "2026-10-01",
+    // Non-production branches deploy a Preview via `wrangler preview`, which requires this block.
+    "previews": {},
     "assets": {
         "directory": "dist",
         "not_found_handling": "404-page",
