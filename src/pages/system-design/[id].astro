@@ -2,43 +2,73 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
-import { sortItemsByDateDesc } from '../../utils/data-utils';
+import { isPublished, sortItemsByDateDesc } from '../../utils/data-utils';
 import siteConfig from '../../data/site-config';
+import { systemDesignSections } from '../../data/system-design-sections';
+import topicPages from '../../data/topic-pages.json';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('systemDesign')).sort(sortItemsByDateDesc);
-    return posts.map((post) => ({
-        params: { id: post.id },
-        props: { post }
-    }));
+    const published = new Map(posts.filter(isPublished).map((p) => [p.id, p]));
+    const topicOf = new Map(topicPages.map((t) => [t.slug, t.section]));
+    return posts.map((post) => {
+        // Related = published notes from the same roadmap topic group, then same section.
+        const group = topicOf.get(post.id);
+        const sameGroup = topicPages.filter((t) => t.section === group).map((t) => published.get(t.slug));
+        const sameSection = [...published.values()].filter((p) => p.data.section === post.data.section);
+        const related = [...new Set([...sameGroup, ...sameSection])]
+            .filter((p): p is CollectionEntry<'systemDesign'> => !!p && p.id !== post.id)
+            .slice(0, 5);
+        return { params: { id: post.id }, props: { post, related, group } };
+    });
 }
 
 type Props = {
     post: CollectionEntry<'systemDesign'>;
+    related: CollectionEntry<'systemDesign'>[];
+    group?: string;
 };
 
-const { post } = Astro.props;
+const { post, related, group } = Astro.props;
 const { title, publishDate, updatedDate, excerpt, seo } = post.data;
+const section = systemDesignSections.find((s) => s.id === post.data.section);
+const crumbs = [
+    { name: 'System Design', href: '/system-design' },
+    ...(section ? [{ name: section.title, href: `/system-design/${section.id}` }] : [])
+];
 const { Content } = await render(post);
 
 // Use the configured `site` to generate an absolute URL
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
 
-// BlogPosting structured data for search engines.
+// TechArticle + BreadcrumbList, appended to the site-wide @graph in BaseHead.
 const authorId = new URL('/#bhuvneshverma', Astro.site).toString();
-const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: title,
-    description: excerpt ?? '',
-    url: shareUrl,
-    mainEntityOfPage: shareUrl,
-    datePublished: publishDate.toISOString(),
-    dateModified: (updatedDate ?? publishDate).toISOString(),
-    image: new URL('/og.png', Astro.site).toString(),
-    author: { '@type': 'Person', '@id': authorId, name: 'Bhuvnesh Verma', url: siteConfig.website },
-    publisher: { '@id': authorId }
-};
+const articleSchema = [
+    {
+        '@type': 'TechArticle',
+        headline: title,
+        description: excerpt ?? '',
+        url: shareUrl,
+        mainEntityOfPage: shareUrl,
+        datePublished: publishDate.toISOString(),
+        dateModified: (updatedDate ?? publishDate).toISOString(),
+        image: new URL('/og.png', Astro.site).toString(),
+        inLanguage: 'en',
+        about: [title, ...(group ? [group] : []), 'System Design'],
+        isPartOf: { '@id': new URL('/', Astro.site).toString() },
+        author: { '@type': 'Person', '@id': authorId, name: 'Bhuvnesh Verma', url: siteConfig.website },
+        publisher: { '@id': authorId }
+    },
+    {
+        '@type': 'BreadcrumbList',
+        itemListElement: [...crumbs, { name: title, href: Astro.url.pathname }].map((c, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: c.name,
+            item: new URL(c.href, Astro.site).toString()
+        }))
+    }
+];
 
 function formatDate(date: Date) {
     const y = date.getFullYear();
@@ -48,18 +78,31 @@ function formatDate(date: Date) {
 }
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image} pageType={seo?.pageType ?? 'article'} showHeader={false}>
-    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+<BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image} pageType={seo?.pageType ?? 'article'} showHeader={false} noindex={!isPublished(post)} schema={articleSchema}>
     <article class="mb-16 sm:mb-24">
         <header class="mb-8">
+            <nav aria-label="Breadcrumb" class="mb-4 text-sm opacity-60">
+                {crumbs.map((c, i) => (<>{i > 0 && <span aria-hidden="true"> / </span>}<a href={c.href} class="hover:underline">{c.name}</a></>))}
+            </nav>
             <h1 class="font-sans text-3xl leading-tight font-medium sm:text-5xl sm:leading-tight">{title}</h1>
             <div class="mt-4 text-sm tabular-nums opacity-60">
-                {formatDate(updatedDate ?? publishDate)}
+                <a href="/" rel="author" class="hover:underline">Bhuvnesh Verma</a> ·
+                {updatedDate ? <>Updated <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time></> : <time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time>}
             </div>
         </header>
         <div class="prose article-muted max-w-none">
             <Content />
         </div>
+        {related.length > 0 && (
+            <nav aria-labelledby="related-heading" class="mt-12 border-t pt-8 border-[color-mix(in_oklab,var(--text-main)_15%,transparent)]">
+                <h2 id="related-heading" class="mb-4 font-sans text-lg font-medium">Related notes</h2>
+                <ul class="space-y-2">
+                    {related.map((r) => (
+                        <li><a href={`/system-design/${r.id}/`} class="opacity-70 transition hover:opacity-100 hover:underline">{r.data.title}</a></li>
+                    ))}
+                </ul>
+            </nav>
+        )}
         <div class="mt-8 flex flex-wrap items-center justify-end gap-6 text-sm sm:mt-12 sm:text-base">
             <Button class="copy-url-button" aria-label="Copy link" data-url={shareUrl} data-tooltip-default="Copy link" data-tooltip-success="Copied">
                 Share

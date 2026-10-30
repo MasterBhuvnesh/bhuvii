@@ -1,7 +1,9 @@
 ---
 import { systemDesignSections } from '../../data/system-design-sections';
 import roadmapRows from '../../data/system-design-sheet.json';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isPublished } from '../../utils/data-utils';
 
 const section = systemDesignSections.find((s) => s.id === 'fundamentals')!;
 
@@ -30,9 +32,27 @@ function rowTopics(row: any): TopicItem[] {
 const rowsWithTopics = roadmapRows
     .map((row: any) => ({ center: row.center as string, topics: rowTopics(row) }))
     .filter((r) => r.topics.length > 0);
+
+const notes = await getCollection('systemDesign', (p) => p.data.section === 'fundamentals' && isPublished(p));
+const collectionSchema = {
+    '@type': 'CollectionPage',
+    name: section.title,
+    description: section.description,
+    url: new URL(Astro.url.pathname, Astro.site).toString(),
+    isPartOf: { '@id': new URL('/', Astro.site).toString() },
+    mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: notes.map((p, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: p.data.title,
+            url: new URL(`/system-design/${p.id}/`, Astro.site).toString()
+        }))
+    }
+};
 ---
 
-<BaseLayout title={section.title} description={section.description} showHeader={false}>
+<BaseLayout title={section.title} description={section.description} showHeader={false} schema={[collectionSchema]}>
     <h1 class="mb-4 font-sans text-2xl leading-tight sm:text-4xl">{section.title}</h1>
     <p class="mb-12 text-sm leading-relaxed text-main/70 sm:mb-16 lg:text-[18px]">{section.description}</p>
     <div class="mb-16 sm:mb-24">
