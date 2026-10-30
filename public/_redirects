@@ -1,0 +1,4 @@
+# The system design notes were removed; send old note and hub URLs to the roadmap.
+/system-design /system-design-roadmap/ 301
+/system-design/* /system-design-roadmap/ 301
+/rss.xml / 301

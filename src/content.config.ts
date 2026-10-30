@@ -25,17 +25,4 @@ const pages = defineCollection({
         })
 });
 
-const systemDesign = defineCollection({
-    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/system-design' }),
-    schema: ({ image }) =>
-        z.object({
-            title: z.string(),
-            excerpt: z.string().optional(),
-            section: z.string(),
-            publishDate: z.coerce.date(),
-            updatedDate: z.coerce.date().optional(),
-            seo: seoSchema(image).optional()
-        })
-});
-
-export const collections = { pages, systemDesign };
+export const collections = { pages };

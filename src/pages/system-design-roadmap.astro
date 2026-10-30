@@ -66,7 +66,7 @@ const stubClass =
                             <div class="flex flex-1 flex-col items-stretch gap-2 md:items-end">
                                 {(row.left ?? []).map((child) =>
                                     child.kind === 'box' ? (
-                                        <TopicBox title={child.title} href={child.href} />
+                                        <TopicBox title={child.title} />
                                     ) : child.kind === 'card' ? (
                                         <div class={cardClass}>
                                             {child.lines.map((line) => (
@@ -85,14 +85,14 @@ const stubClass =
                                                                     typeof cell === 'string' ? (
                                                                         <div class={boxClass}>{cell}</div>
                                                                     ) : (
-                                                                        <TopicBox title={cell.title} href={cell.href} />
+                                                                        <TopicBox title={cell.title} />
                                                                     )
                                                                 )}
                                                             </div>
                                                         ) : typeof item === 'string' ? (
                                                             <div class={`${boxClass} mb-2`}>{item}</div>
                                                         ) : (
-                                                            <TopicBox title={item.title} href={item.href} class="mb-2" />
+                                                            <TopicBox title={item.title} class="mb-2" />
                                                         )
                                                     )}
                                                     {block.label && (
@@ -118,7 +118,7 @@ const stubClass =
                             <div class="flex flex-1 flex-col items-stretch gap-2 md:items-start">
                                 {(row.right ?? []).map((child) =>
                                     child.kind === 'box' ? (
-                                        <TopicBox title={child.title} href={child.href} />
+                                        <TopicBox title={child.title} />
                                     ) : child.kind === 'card' ? (
                                         <div class={cardClass}>
                                             {child.lines.map((line) => (
@@ -137,14 +137,14 @@ const stubClass =
                                                                     typeof cell === 'string' ? (
                                                                         <div class={boxClass}>{cell}</div>
                                                                     ) : (
-                                                                        <TopicBox title={cell.title} href={cell.href} />
+                                                                        <TopicBox title={cell.title} />
                                                                     )
                                                                 )}
                                                             </div>
                                                         ) : typeof item === 'string' ? (
                                                             <div class={`${boxClass} mb-2`}>{item}</div>
                                                         ) : (
-                                                            <TopicBox title={item.title} href={item.href} class="mb-2" />
+                                                            <TopicBox title={item.title} class="mb-2" />
                                                         )
                                                     )}
                                                     {block.label && (
@@ -173,14 +173,14 @@ const stubClass =
                                                                     typeof cell === 'string' ? (
                                                                         <div class={boxClass}>{cell}</div>
                                                                     ) : (
-                                                                        <TopicBox title={cell.title} href={cell.href} />
+                                                                        <TopicBox title={cell.title} />
                                                                     )
                                                                 )}
                                                             </div>
                                                         ) : typeof item === 'string' ? (
                                                             <div class={`${boxClass} mb-2`}>{item}</div>
                                                         ) : (
-                                                            <TopicBox title={item.title} href={item.href} class="mb-2" />
+                                                            <TopicBox title={item.title} class="mb-2" />
                                                         )
                                                     )}
                                                     {block.label && (
