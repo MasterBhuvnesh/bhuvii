@@ -1,6 +1,8 @@
 # Deployment — Cloudflare Workers (static assets)
 
-Status: **live on Workers since 2026-10-18.** Remaining: step 3 (Workers Builds Git
+Status: **live on Workers since 2026-10-18; Workers Builds connected** (push to `master`
+= production, other branches = preview URLs). Remaining: the optional follow-ups.
+Original plan below: step 3 (Workers Builds Git
 connect) and the optional follow-ups. Decision made 2026-10-18: deploy the
 portfolio to **Cloudflare Workers** using static assets (assets-only Worker, no
 worker script). Do **not** use Cloudflare Pages.

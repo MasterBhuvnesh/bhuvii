@@ -1,5 +1,5 @@
 import type { APIContext } from 'astro';
-import siteConfig from '../data/site-config';
+import siteConfig, { bio } from '../data/site-config';
 
 // llms.txt (https://llmstxt.org): a plain-Markdown map of the site for AI assistants.
 export function GET(context: APIContext) {
@@ -8,7 +8,7 @@ export function GET(context: APIContext) {
 
 > ${siteConfig.subtitle}. ${siteConfig.description}
 
-Bhuvnesh Verma is a cloud-native full-stack and AI engineer based in Nagpur, India. This site is Bhuvnesh's portfolio and a system design learning roadmap.
+${bio}
 
 - GitHub: https://github.com/MasterBhuvnesh
 - LinkedIn: https://www.linkedin.com/in/bhuvneshverma/
