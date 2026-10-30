@@ -1,7 +1,7 @@
 ---
 import dmSans300Woff2 from '@fontsource/dm-sans/files/dm-sans-latin-300-normal.woff2?url';
 import { getImage } from 'astro:assets';
-import siteConfig from '../data/site-config';
+import siteConfig, { bio } from '../data/site-config';
 import type { ImageInput } from '../types';
 
 import '../styles/global.css';
@@ -64,11 +64,12 @@ const siteSchema = {
             url: new URL('/', Astro.site).toString(),
             image: new URL('/bhuvii-512.jpg', Astro.site).toString(),
             jobTitle: 'Cloud-Native Full-Stack & AI Engineer',
-            description: siteConfig.description,
+            description: bio,
             address: { '@type': 'PostalAddress', addressLocality: 'Nagpur', addressCountry: 'IN' },
             alumniOf: {
                 '@type': 'CollegeOrUniversity',
-                name: 'Shri Ramdeobaba College of Engineering and Management'
+                name: 'Ramdeobaba University',
+                alternateName: 'Shri Ramdeobaba College of Engineering and Management'
             },
             knowsAbout: [
                 'System Design',

@@ -42,7 +42,7 @@ const pageSchema = {
 >
     <h1 class="mb-4 font-sans text-2xl leading-tight sm:text-4xl">System Design Roadmap</h1>
     <p class="mb-12 leading-relaxed text-main/70 sm:mb-16">
-        Follow the spine top to bottom. Each dark node is a core topic — the cards branching off hold the details.
+        A system design roadmap for engineers preparing for interviews or building systems at scale. It orders the topics so each builds on the last: high level design and architectural styles first, then scalability, caching, load balancing, consistency and availability, then replication, partitioning and database internals, then gateways, queues, protocols, DNS, CDNs and event-driven systems, and finally low level design, testing, security and cost. Follow the spine top to bottom. Each dark node is a core topic, and the cards branching off hold the details.
     </p>
 
     <div class="relative mb-16 sm:mb-24">
@@ -122,7 +122,7 @@ const pageSchema = {
                             )}
                         </div>
                         <div class="relative max-md:order-1 max-md:mx-auto">
-                            <div class={chipClass}>{row.center}</div>
+                            <h2 class={chipClass}>{row.center}</h2>
                         </div>
                         <div class="flex items-center gap-2 max-md:order-3">
                             {(row.right ?? []).length > 0 && (
