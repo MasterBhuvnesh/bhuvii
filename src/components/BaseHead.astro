@@ -11,9 +11,12 @@ export type Props = {
     description?: string;
     image?: ImageInput | undefined;
     pageType?: 'website' | 'article';
+    noindex?: boolean;
+    /** Extra JSON-LD nodes appended to the site-wide @graph. */
+    schema?: Record<string, unknown>[];
 };
 
-const { description = '', pageType = 'website' } = Astro.props;
+const { description = '', pageType = 'website', noindex = false, schema = [] } = Astro.props;
 const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(' | ');
 const image = Astro.props.image ?? siteConfig.image;
 let resolvedImage: { src: string; alt?: string } | undefined;
@@ -67,6 +70,19 @@ const siteSchema = {
                 '@type': 'CollegeOrUniversity',
                 name: 'Shri Ramdeobaba College of Engineering and Management'
             },
+            knowsAbout: [
+                'System Design',
+                'Distributed Systems',
+                'Cloud-Native Architecture',
+                'Full-Stack Web Development',
+                'Mobile App Development',
+                'Generative AI',
+                'TypeScript',
+                'Python',
+                'Cloudflare Workers',
+                'MongoDB',
+                'Supabase'
+            ],
             sameAs: [
                 'https://github.com/MasterBhuvnesh',
                 'https://www.linkedin.com/in/bhuvneshverma/',
@@ -79,7 +95,8 @@ const siteSchema = {
             url: siteConfig.website,
             name: 'Bhuvnesh Verma',
             publisher: { '@id': personId }
-        }
+        },
+        ...schema
     ]
 };
 ---
@@ -108,6 +125,8 @@ const siteSchema = {
 <!-- Page Metadata -->
 <link rel="canonical" href={canonicalURL} />
 <meta name="description" content={description} />
+<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+<meta name="author" content="Bhuvnesh Verma" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={pageType} />

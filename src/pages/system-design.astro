@@ -14,9 +14,10 @@ const hiddenSections = ['platforms', 'piyush-garg'];
 
 <BaseLayout
     title="System Design"
-    description="System design fundamentals, platform design breakdowns and recommended learning resources"
+    description="Free system design notes by Bhuvnesh Verma: caching, sharding, CAP, consensus, queues and more, explained with trade-offs, diagrams and real-world examples."
     showHeader={false}
 >
+    <h1 class="sr-only">System Design</h1>
     {
         systemDesignSections.map((section, i) => {
             if (hiddenSections.includes(section.id)) return null;

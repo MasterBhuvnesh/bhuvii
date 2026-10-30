@@ -11,6 +11,6 @@ const posts = (await getCollection('systemDesign', (post) => post.data.section =
 );
 ---
 
-<BaseLayout title={section.title} description={section.description} showHeader={false}>
+<BaseLayout title={section.title} description={section.description} showHeader={false} noindex>
     <SystemSection title={section.title} description={section.description} posts={posts} />
 </BaseLayout>
