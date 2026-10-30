@@ -12,13 +12,14 @@ const profilePage = {
     '@id': new URL('/', Astro.site).toString() + '#profile',
     url: new URL('/', Astro.site).toString(),
     name: 'Bhuvnesh Verma — Cloud-Native Full-Stack & AI Engineer',
-    mainEntity: { '@id': new URL('/#bhuvneshverma', Astro.site).toString() }
+    mainEntity: { '@id': new URL('/#bhuvneshverma', Astro.site).toString() },
+    dateModified: new Date().toISOString()
 };
 ---
 
 <BaseLayout
     title="Cloud-Native Full-Stack & AI Engineer"
-    description="Bhuvnesh Verma, cloud-native full-stack and AI engineer in Nagpur, India. Building reliable web, mobile, cloud and AI systems, plus free system design notes."
+    description="Bhuvnesh Verma, cloud-native full-stack and AI engineer in Nagpur, India. Building reliable web, mobile, cloud and AI systems, plus a visual system design roadmap."
     schema={[profilePage]}
 >
     <Profile />

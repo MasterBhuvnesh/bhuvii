@@ -12,6 +12,9 @@ import siteConfig from './src/data/site-config';
 // https://astro.build/config
 export default defineConfig({
     site: siteConfig.website,
+    build: {
+        inlineStylesheets: 'always'
+    },
     vite: {
         plugins: [tailwindcss()]
     },

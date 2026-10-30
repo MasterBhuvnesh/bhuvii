@@ -408,6 +408,13 @@ html.dark .tech-icons .tech-icon {
    reveals below it (progressively enhanced), smooth theme swap.
    fill-mode "backwards" on .reveal keeps hover transforms working
    after the reveal completes. Zero client JS. */
+/* Transform-only: an opacity-0 start keeps the hero bio from counting as painted (LCP). */
+@keyframes lift {
+    from {
+        transform: translateY(14px);
+    }
+}
+
 @keyframes rise {
     from {
         opacity: 0;
@@ -426,7 +433,7 @@ body {
 }
 
 .profile-stagger > * {
-    animation: rise 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation: lift 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 .profile-stagger > *:nth-child(2) {
     animation-delay: 60ms;
