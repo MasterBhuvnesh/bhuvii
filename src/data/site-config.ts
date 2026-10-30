@@ -7,7 +7,7 @@ const siteConfig: SiteConfig = {
     description:
         'I design, build, and scale reliable systems used by real people. I work across web, mobile, cloud, and AI, automating repetitive work so teams ship faster, and making sure what goes live is stable and ready to grow.',
     image: {
-        src: '/og.png',
+        src: '/og-v2.png',
         alt: 'Bhuvnesh Verma · Product Engineer, Cloud-Native Builder, AI Systems Creator'
     },
     headerNavLinks: [

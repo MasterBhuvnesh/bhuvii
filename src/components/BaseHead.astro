@@ -17,7 +17,8 @@ export type Props = {
 };
 
 const { description = '', pageType = 'website', noindex = false, schema = [] } = Astro.props;
-const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(' | ');
+// Untitled pages (the home page) lead with the name, which is what people search for.
+const title = Astro.props.title ? `${Astro.props.title} | ${siteConfig.title}` : `${siteConfig.title} | ${siteConfig.subtitle}`;
 const image = Astro.props.image ?? siteConfig.image;
 let resolvedImage: { src: string; alt?: string } | undefined;
 if (image?.src) {
