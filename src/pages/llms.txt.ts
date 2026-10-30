@@ -19,9 +19,9 @@ Bhuvnesh Verma is a cloud-native full-stack and AI engineer based in Nagpur, Ind
 ## Key pages
 
 - [Portfolio](${url('/')}): projects, experience, skills and contact
-- [System Design](${url('/system-design')}): index of all system design notes
-- [System Design Fundamentals](${url('/system-design/fundamentals')}): notes grouped by topic
-- [System Design Roadmap](${url('/system-design-roadmap')}): visual learning roadmap
+- [System Design](${url('/system-design/')}): index of all system design notes
+- [System Design Fundamentals](${url('/system-design/fundamentals/')}): notes grouped by topic
+- [System Design Roadmap](${url('/system-design-roadmap/')}): visual learning roadmap
 
 ## System design notes
 

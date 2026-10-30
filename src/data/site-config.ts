@@ -13,7 +13,7 @@ const siteConfig: SiteConfig = {
     headerNavLinks: [
         {
             text: 'System Design',
-            href: '/system-design'
+            href: '/system-design/'
         }
         // {
         //     text: 'Design Patterns',

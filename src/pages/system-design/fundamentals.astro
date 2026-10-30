@@ -39,7 +39,7 @@ const collectionSchema = {
     name: section.title,
     description: section.description,
     url: new URL(Astro.url.pathname, Astro.site).toString(),
-    isPartOf: { '@id': new URL('/', Astro.site).toString() },
+    isPartOf: { '@id': new URL('/#website', Astro.site).toString() },
     mainEntity: {
         '@type': 'ItemList',
         itemListElement: notes.map((p, i) => ({

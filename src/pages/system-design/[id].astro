@@ -3,7 +3,6 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import { isPublished, sortItemsByDateDesc } from '../../utils/data-utils';
-import siteConfig from '../../data/site-config';
 import { systemDesignSections } from '../../data/system-design-sections';
 import topicPages from '../../data/topic-pages.json';
 
@@ -33,8 +32,8 @@ const { post, related, group } = Astro.props;
 const { title, publishDate, updatedDate, excerpt, seo } = post.data;
 const section = systemDesignSections.find((s) => s.id === post.data.section);
 const crumbs = [
-    { name: 'System Design', href: '/system-design' },
-    ...(section ? [{ name: section.title, href: `/system-design/${section.id}` }] : [])
+    { name: 'System Design', href: '/system-design/' },
+    ...(section ? [{ name: section.title, href: `/system-design/${section.id}/` }] : [])
 ];
 const { Content } = await render(post);
 
@@ -47,16 +46,16 @@ const articleSchema = [
     {
         '@type': 'TechArticle',
         headline: title,
-        description: excerpt ?? '',
+        ...(excerpt && { description: excerpt }),
         url: shareUrl,
         mainEntityOfPage: shareUrl,
         datePublished: publishDate.toISOString(),
         dateModified: (updatedDate ?? publishDate).toISOString(),
         image: new URL('/og.png', Astro.site).toString(),
         inLanguage: 'en',
-        about: [title, ...(group ? [group] : []), 'System Design'],
-        isPartOf: { '@id': new URL('/', Astro.site).toString() },
-        author: { '@type': 'Person', '@id': authorId, name: 'Bhuvnesh Verma', url: siteConfig.website },
+        about: [...(group ? [group] : []), 'System Design'].map((name) => ({ '@type': 'Thing', name })),
+        isPartOf: { '@id': new URL('/#website', Astro.site).toString() },
+        author: { '@id': authorId },
         publisher: { '@id': authorId }
     },
     {
