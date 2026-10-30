@@ -1,7 +1,0 @@
----
-title: "Primary Scalability Bottlenecks in System Design"
-section: fundamentals
-publishDate: 'Oct 11 2026'
----
-
-Full notes coming soon.

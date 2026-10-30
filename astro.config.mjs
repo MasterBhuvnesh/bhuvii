@@ -25,5 +25,11 @@ export default defineConfig({
             excludeLangs: ['mermaid']
         }
     },
-    integrations: [mdx(), sitemap()]
+    integrations: [
+        mdx(),
+        sitemap({
+            // Keep in sync with pages that pass `noindex` to BaseLayout.
+            filter: (page) => !/\/(404|500|design-patterns)\/?$/.test(page)
+        })
+    ]
 });

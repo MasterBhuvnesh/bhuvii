@@ -11,9 +11,12 @@ export type Props = {
     description?: string;
     image?: ImageInput | undefined;
     pageType?: 'website' | 'article';
+    noindex?: boolean;
+    /** Extra JSON-LD nodes appended to the site-wide @graph. */
+    schema?: Record<string, unknown>[];
 };
 
-const { description = '', pageType = 'website' } = Astro.props;
+const { description = '', pageType = 'website', noindex = false, schema = [] } = Astro.props;
 const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(' | ');
 const image = Astro.props.image ?? siteConfig.image;
 let resolvedImage: { src: string; alt?: string } | undefined;
@@ -59,7 +62,7 @@ const siteSchema = {
             '@id': personId,
             name: 'Bhuvnesh Verma',
             url: siteConfig.website,
-            image: new URL('/bhuvii.png', Astro.site).toString(),
+            image: new URL('/bhuvii-512.jpg', Astro.site).toString(),
             jobTitle: 'Cloud-Native Full-Stack & AI Engineer',
             description: siteConfig.description,
             address: { '@type': 'PostalAddress', addressLocality: 'Nagpur', addressCountry: 'IN' },
@@ -67,6 +70,19 @@ const siteSchema = {
                 '@type': 'CollegeOrUniversity',
                 name: 'Shri Ramdeobaba College of Engineering and Management'
             },
+            knowsAbout: [
+                'System Design',
+                'Distributed Systems',
+                'Cloud-Native Architecture',
+                'Full-Stack Web Development',
+                'Mobile App Development',
+                'Generative AI',
+                'TypeScript',
+                'Python',
+                'Cloudflare Workers',
+                'MongoDB',
+                'Supabase'
+            ],
             sameAs: [
                 'https://github.com/MasterBhuvnesh',
                 'https://www.linkedin.com/in/bhuvneshverma/',
@@ -75,11 +91,12 @@ const siteSchema = {
         },
         {
             '@type': 'WebSite',
-            '@id': new URL('/', Astro.site).toString(),
+            '@id': new URL('/#website', Astro.site).toString(),
             url: siteConfig.website,
             name: 'Bhuvnesh Verma',
             publisher: { '@id': personId }
-        }
+        },
+        ...schema
     ]
 };
 ---
@@ -103,11 +120,12 @@ const siteSchema = {
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f1ec" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171717" />
 <link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
 <!-- Page Metadata -->
 <link rel="canonical" href={canonicalURL} />
 <meta name="description" content={description} />
+<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+<meta name="author" content="Bhuvnesh Verma" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={pageType} />

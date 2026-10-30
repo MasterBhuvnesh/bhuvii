@@ -111,14 +111,21 @@ const instagramIcon =
 ---
 
 <section class="profile-stagger mb-10 w-full sm:mb-12" aria-label="Profile">
-    <img
-        src="/bhuvii.png"
-        alt="Bhuvnesh Verma"
-        width="96"
-        height="96"
-        class="h-24 w-24 rounded-full object-cover"
-    />
-    <h2 class="mt-4 text-left text-lg font-medium">Bhuvnesh Verma</h2>
+    <!-- Initials sit behind the photo; if the photo fails to load it removes itself and the initials show. -->
+    <span class="relative flex h-24 w-24 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--text-main)_10%,transparent)] text-2xl font-medium">
+        <span aria-hidden="true">BV</span>
+        <img
+            src="/bhuvii-192.webp"
+            alt="Bhuvnesh Verma"
+            width="96"
+            height="96"
+            fetchpriority="high"
+            decoding="async"
+            onerror="this.remove()"
+            class="absolute inset-0 h-24 w-24 rounded-full object-cover"
+        />
+    </span>
+    <h1 class="mt-4 text-left text-lg font-medium">Bhuvnesh Verma</h1>
     <p class="text-main/70 mt-2 leading-relaxed">Product Engineer, Cloud-Native Builder, AI Systems Creator</p>
     <p class="text-main/70 mt-4 leading-relaxed">
         I design, build, and scale reliable systems used by real people. I work across web, mobile, cloud, and AI, automating
