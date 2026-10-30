@@ -6,20 +6,21 @@ import Projects from '../components/Projects.astro';
 import Skills from '../components/Skills.astro';
 import Testimonials from '../components/Testimonials.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import siteConfig from '../data/site-config';
 
 const profilePage = {
     '@type': 'ProfilePage',
     '@id': new URL('/', Astro.site).toString() + '#profile',
     url: new URL('/', Astro.site).toString(),
-    name: 'Bhuvnesh Verma — Cloud-Native Full-Stack & AI Engineer',
+    name: `Bhuvnesh Verma — ${siteConfig.subtitle}`,
     mainEntity: { '@id': new URL('/#bhuvneshverma', Astro.site).toString() },
     dateModified: new Date().toISOString()
 };
 ---
 
 <BaseLayout
-    title="Cloud-Native Full-Stack & AI Engineer"
-    description="Bhuvnesh Verma, cloud-native full-stack and AI engineer in Nagpur, India. Building reliable web, mobile, cloud and AI systems, plus a visual system design roadmap."
+    title={siteConfig.subtitle}
+    description="Bhuvnesh Verma: product engineer, cloud-native builder and AI systems creator in Nagpur, India, building reliable web, mobile, cloud and AI systems."
     schema={[profilePage]}
 >
     <Profile />

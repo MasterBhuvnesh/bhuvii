@@ -63,7 +63,7 @@ const siteSchema = {
             name: 'Bhuvnesh Verma',
             url: new URL('/', Astro.site).toString(),
             image: new URL('/bhuvii-512.jpg', Astro.site).toString(),
-            jobTitle: 'Cloud-Native Full-Stack & AI Engineer',
+            jobTitle: siteConfig.subtitle,
             description: bio,
             address: { '@type': 'PostalAddress', addressLocality: 'Nagpur', addressCountry: 'IN' },
             alumniOf: {
