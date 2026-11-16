@@ -17,7 +17,7 @@ ${bio}
 ## Pages
 
 - [Portfolio](${url('/')}): projects, experience, testimonials, skills and contact
-- [System Design Roadmap](${url('/system-design-roadmap/')}): visual roadmap of what to learn in system design and in what order
+- [System Design Roadmap](${url('/system-design-roadmap/')}): visual roadmap of high level design (HLD) and low level design (LLD) topics to learn, in order, for system design interviews
 
 ## Optional
 

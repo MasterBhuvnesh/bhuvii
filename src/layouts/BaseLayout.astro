@@ -1,5 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+// Inlined so the theme is set before first paint without an extra request.
+import themeToggle from '../scripts/theme-toggle.js?raw';
 import '@fontsource/dm-sans/latin-300.css';
 import '@fontsource/dm-sans/latin-500.css';
 import '@fontsource/dm-sans/latin-700.css';
@@ -24,7 +26,7 @@ const year = new Date().getFullYear();
             } catch {}
         </script>
         <ClientRouter />
-        <script is:inline src="/theme-toggle.js"></script>
+        <script is:inline set:html={themeToggle} />
     </head>
     <body class="bg-main text-main">
         <div class="flex min-h-screen flex-col px-4 md:px-8">
