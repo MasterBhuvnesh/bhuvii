@@ -26,7 +26,7 @@ const pageSchema = {
     '@type': 'WebPage',
     '@id': `${pageUrl}#webpage`,
     url: pageUrl,
-    name: 'System Design Roadmap',
+    name: 'System Design Roadmap: HLD and LLD Step by Step',
     isPartOf: { '@id': new URL('/#website', Astro.site).toString() },
     author: { '@id': new URL('/#bhuvneshverma', Astro.site).toString() },
     inLanguage: 'en',
@@ -35,8 +35,8 @@ const pageSchema = {
 ---
 
 <BaseLayout
-    title="System Design Roadmap"
-    description="A visual system design roadmap: what to learn and in what order, from scaling and caching to databases, consistency, messaging and security."
+    title="System Design Roadmap: HLD and LLD Step by Step"
+    description="Free system design roadmap for interviews: high level and low level design topics in order, from scaling and caching to databases, messaging and security."
     showHeader={false}
     schema={[pageSchema]}
 >

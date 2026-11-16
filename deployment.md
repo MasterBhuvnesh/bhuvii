@@ -32,7 +32,7 @@ time), so an assets-only Worker serves everything with no application code.
   not touch email** — MX/TXT are separate records.
 - Repo: `MasterBhuvnesh/bhuvii`, deploys trigger on push to `master`.
 - Build: `npm run build` → `dist/` with `_astro/` hashed assets, `index.html`,
-  `robots.txt`, `rss.xml`, `sitemap-0.xml`, `sitemap-index.xml`, `theme-toggle.js`, `bhuvii.png`,
+  `robots.txt`, `rss.xml`, `sitemap-0.xml`, `sitemap-index.xml`, `bhuvii.png`,
   favicon pack (`.ico`, 16/32 PNG, 180 apple-touch, 192/512 PWA), `site.webmanifest`,
   plus section folders.
 - No `404.astro` exists yet.
